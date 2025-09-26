@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL_API= "http://localhost:3000/api-aster"
+const URL_API= "http://localhost:3000/aster"
 
 //Metodo GET para el READ
 //Para ver TODAS las ASTER (Estrellas)
