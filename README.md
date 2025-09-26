@@ -1,4 +1,4 @@
-# React + Vite
+# Asterium: más allá de las estrellas, más cerca del conocimientomás allá de las estrellas, más cerca del conocimiento.
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
