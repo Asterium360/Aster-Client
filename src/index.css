@@ -1,6 +1,11 @@
+@import "tailwindcss";
+
+
 body {
   font-family: "Oxanium", sans-serif;
   font-optical-sizing: auto;
   font-weight: weight;
   font-style: normal;
 }
+
+
