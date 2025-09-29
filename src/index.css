@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 
 body {
@@ -6,6 +9,7 @@ body {
   font-optical-sizing: auto;
   font-weight: weight;
   font-style: normal;
+  background-color: aquamarine;
 }
 
 

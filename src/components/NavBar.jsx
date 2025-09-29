@@ -1,58 +1,114 @@
-import React from 'react'
-import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@heroui/react";
-import Logo from "../assets/Logo.svg"
+import React, { useState, useEffect } from "react"; 
+import { NavLink } from "react-router-dom";
+import Logo from "../assets/Logo.svg";
 
-export const LogoAster = () => {
+const NavBar = ({
+  logo = Logo,
+  links = [
+    { label: "Home", to: "/" },
+    { label: "Explore", to: "/explore" },
+    { label: "About", to: "/about" },
+    { label: "Contact", to: "/contact" },
+  ],
+  actions = [
+    { label: "Login", to: "/login" },
+    { label: "Sign Up", to: "/register" },
+  ],
+}) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, []);
+
+  const handleToggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
   return (
-    <img src={Logo}
-    alt="Logo Asterium"
-    width={36}
-    height={36}
-    className='logo'
-      />
+    <nav style={{ backgroundColor: "#02060D" }} className="text-white px-4 py-4">
+      {/* Contenedor principal */}
+      <div className="flex items-center justify-between">
+        {/* Logo y nombre */}
+        <div className="flex items-center gap-2">
+          <NavLink to="/">
+            <img src={logo} alt="Logo" className="h-9 w-9 object-contain" />
+          </NavLink>
+          <NavLink to="/" className="font-bold text-lg">
+            ASTERIUM
+          </NavLink>
+        </div>
+
+        {/* Botón hamburguesa mobile */}
+        <button
+          className="sm:hidden p-2 rounded-md focus:outline-none bg-gray-700"
+          onClick={handleToggleMenu}
+        >
+          {isMenuOpen ? "✕" : "☰"}
+        </button>
+
+        {/* Links de escritorio */}
+        <div className="hidden sm:flex gap-8 items-center">
+          {links.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) =>
+                `px-2 py-1 rounded-md hover:bg-gray-700 ${
+                  isActive ? "bg-gray-900 font-bold" : ""
+                }`
+              }
+            >
+              {link.label}
+            </NavLink>
+          ))}
+
+          {actions.map((btn) => (
+            <NavLink
+              key={btn.to}
+              to={btn.to}
+              style={{ backgroundColor: "#2f4992" }}
+              className="px-3 py-1 rounded-md hover:bg-purple-700"
+            >
+              {btn.label}
+            </NavLink>
+          ))}
+        </div>
+      </div>
+
+      {/* Menú desplegable móvil con animación */}
+      <div
+        className={`sm:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+          isMenuOpen ? "max-h-screen opacity-100 mt-2" : "max-h-0 opacity-0 mt-0"
+        } flex flex-col gap-2`}
+      >
+        {links.map((link) => (
+          <NavLink
+            key={link.to}
+            to={link.to}
+            className={({ isActive }) =>
+              `px-2 py-2 rounded-md hover:bg-gray-700 ${
+                isActive ? "bg-gray-900 font-bold" : ""
+              }`
+            }
+          >
+            {link.label}
+          </NavLink>
+        ))}
+
+        {actions.map((btn) => (
+          <NavLink
+            key={btn.to}
+            to={btn.to}
+            style={{ backgroundColor: "#2f4992" }}
+            className="px-3 py-2 rounded-md hover:bg-purple-700"
+          >
+            {btn.label}
+          </NavLink>
+        ))}
+      </div>
+    </nav>
   );
 };
 
-const NavBar =() =>{
-  return (
-    <Navbar shouldHideOnScroll>
-      <NavbarBrand>
-        <LogoAster />
-        <p className="font-bold text-inherit">ASTERIUM</p>
-      </NavbarBrand>
-      <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link aria-current="page" href="/">
-            Home
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link aria-current="page" href="/explore">
-            Explore
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="/about">
-            About
-          </Link>
-        </NavbarItem>
-                <NavbarItem isActive>
-          <Link aria-current="page" href="/contact">
-            Contact
-          </Link>
-        </NavbarItem>
-      </NavbarContent>
-      <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
-    </Navbar>
-  );
-}
 export default NavBar;
