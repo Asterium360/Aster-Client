@@ -8,6 +8,7 @@ import About from "../pages/AboutUs";
 import Layout from "../layout/Layout";
 import AsterDetail from "../pages/AsterDetail";
 import AuthForm from "../components/AuthForm";
+import AsterForm from "../components/AsterForm";
 
 
 
@@ -37,7 +38,7 @@ export const AsterRouter = createBrowserRouter([{
         },
         {
             path: "/newpost",
-            element: <AsterPost />
+            element: <AsterForm />
         },
         {
             path: "/editpost/:id",
@@ -55,8 +56,7 @@ export const AsterRouter = createBrowserRouter([{
         {
             path: "/register",
             element: <AuthForm mode="register"/>
-        },
-    
+        }
     ]
 }])
 
