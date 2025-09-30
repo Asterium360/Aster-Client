@@ -4,3 +4,4 @@ body {
   font-weight: weight;
   font-style: normal;
 }
+@import "tailwindcss";
