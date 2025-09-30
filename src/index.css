@@ -1,7 +1,19 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 body {
   font-family: "Oxanium", sans-serif;
   font-optical-sizing: auto;
   font-weight: weight;
   font-style: normal;
+  background-color: aquamarine;
 }
+
 @import "tailwindcss";
+
+
+
+
