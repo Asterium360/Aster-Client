@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import About from "../pages/AboutUs";
 import Layout from "../layout/Layout";
 import AsterDetail from "../pages/AsterDetail";
+import AuthForm from "../components/AuthForm";
 
 
 
@@ -45,7 +46,17 @@ export const AsterRouter = createBrowserRouter([{
         {
             path: "/contact",
             element: <Contact />
-        }
+        },
+        /*Rutas para login/register usando el componente de authform */
+        {
+            path: "/login",
+            element: <AuthForm mode="login" />
+        },
+        {
+            path: "/register",
+            element: <AuthForm mode="register"/>
+        },
+    
     ]
 }])
 

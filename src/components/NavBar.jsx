@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"; 
+import { useState, useEffect } from "react"; 
 import { NavLink } from "react-router-dom";
 import Logo from "../assets/Logo.svg";
 
@@ -12,7 +12,7 @@ const NavBar = ({
   ],
   actions = [
     { label: "Login", to: "/login" },
-    { label: "Sign Up", to: "/register" },
+    { label: "SignUp", to: "/register" },
   ],
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -48,7 +48,7 @@ const NavBar = ({
         </button>
 
         {/* Links de escritorio */}
-        <div className="hidden sm:flex gap-8 items-center">
+        <div className="hidden sm:flex gap-7 items-center">
           {links.map((link) => (
             <NavLink
               key={link.to}

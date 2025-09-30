@@ -7,7 +7,7 @@ function Home() {
   return (
     <>
       <div>
-        <Button title="hola mundo"/>
+      
       </div>
     </>
   )
