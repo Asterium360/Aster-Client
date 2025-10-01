@@ -26,7 +26,7 @@ const AuthForm = ({ mode = "register" }) => {
 
             {/* Formulario encima */}
             <form className="form relative z-10">
-                <p className="title">{isRegister ? "Registrate" : "Iniciar Sesión"}</p>
+                <p className="title">{isRegister ? "REGISTRARSE" : "INICIA SESIÓN"}</p>
                 <p className="message">
                     {isRegister
                         ? "Registrate y disfruta de las maravillas del universo."
@@ -37,7 +37,7 @@ const AuthForm = ({ mode = "register" }) => {
                 {isRegister && (
                     <label>
                         <input className="input" type="text" required />
-                        <span>Name/Username</span>
+                        <span>Nombre</span>
                     </label>
                 )}
 
@@ -48,24 +48,24 @@ const AuthForm = ({ mode = "register" }) => {
 
                 <label>
                     <input className="input" type="password" required />
-                    <span>Password</span>
+                    <span>Contraseña</span>
                 </label>
 
                 {isRegister && (
                     <label>
                         <input className="input" type="password" required />
-                        <span>Confirm password</span>
+                        <span>Confirmar Contraseña</span>
                     </label>
                 )}
 
                 <button type="submit" className="submit">
-                    {isRegister ? "Sign Up" : "Login"}
+                    {isRegister ? "Registrar" : "Iniciar"}
                 </button>
 
                 <p className="signin">
                     {isRegister ? (
                         <>
-                            Ya tienes una cuenta? <a href="/login">Sign In</a>
+                            Ya tienes una cuenta? <a href="/login">Iniciar Sesión</a>
                         </>
                     ) : (
                         <>

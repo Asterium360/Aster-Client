@@ -82,8 +82,8 @@
     color: rgba(255, 255, 255, 0.5);
     position: absolute;
     left: 10px;
-    top: 0px;
-    font-size: 0.9em;
+    top: 30%;
+    font-size: 1em;
     cursor: text;
     transition: 0.3s ease;
 }
