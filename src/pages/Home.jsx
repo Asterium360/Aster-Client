@@ -1,3 +1,6 @@
+
+import Button from "../components/Button";
+
 import React from "react";
 
 // Mock temporal hasta conectar con el back
@@ -137,3 +140,4 @@ function Home() {
 }
 
 export default Home;
+

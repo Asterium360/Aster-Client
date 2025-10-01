@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+
 import { heroui } from "@heroui/react";
 
 export default {
@@ -8,7 +8,16 @@ export default {
         "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}", // 👈 HeroUI
     ],
     theme: {
-        extend: {},
+        extend: {
+        colors: {
+        background: "#02060D",      
+        "text-primary": "#ede6c7",   
+        "text-secondary": "#5f5d7b", 
+        "accent-primary": "#2f4992", 
+        "accent-secondary": "#d2b84d", 
+        "accent-additional": "#4f2859", 
+      },
+        },
     },
     plugins: [heroui()],
 };
