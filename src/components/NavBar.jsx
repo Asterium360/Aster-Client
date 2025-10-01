@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react"; 
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
 import Logo from "../assets/Logo.svg";
-import Button from "./Button"; // Tu componente
+import Button from "./Button"; 
+import { UserCircleIcon } from "@heroicons/react/24/solid";
 
 const NavBar = ({
   logo = Logo,
@@ -19,8 +20,10 @@ const NavBar = ({
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation(); 
+  const navigate = useNavigate();
 
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const user = useAuthStore((state) => state.user);
   const logout = useAuthStore((state) => state.logout);
 
   useEffect(() => {
@@ -39,8 +42,8 @@ const NavBar = ({
       <div className="flex items-center">
         {/* Logo izquierdo */}
         <div className="flex items-center gap-2 flex-1">
-          <NavLink to="/">
-            <img src={logo} alt="Logo" className="h-9 w-9 object-contain" />
+          <NavLink to="/"> 
+          <img src={logo} alt="Logo" className="h-9 w-9 object-contain" />
           </NavLink>
           <NavLink to="/" className="font-bold text-lg">
             ASTERIUM
@@ -56,9 +59,8 @@ const NavBar = ({
                 to={link.to}
                 className={({ isActive }) =>
                   `px-2 py-1 rounded-md hover:bg-gray-700 ${
-                    isActive ? "bg-gray-900 font-bold" : ""
-                  }`
-                }
+                    isActive ? "bg-gray-900 font-bold" : ""}`
+                  }
                 data-testid={`link-${link.label.toLowerCase()}`}
               >
                 {link.label}
@@ -76,7 +78,18 @@ const NavBar = ({
               </NavLink>
             ))
           ) : (
-            <Button title="Logout" action={logout} data-testid="logout-button" />
+          <div className="flex items-center gap-2">
+              {/* Icono de usuario o avatar */}
+              <button onClick={() => navigate("/asterprofile")} className="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
+                {user?.avatar ? (
+                  <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
+                ) : (
+                  <UserCircleIcon className="w-full h-full text-white" />
+                )}
+              </button>
+              {/* Logout */}
+              <Button title="Logout" action={logout} data-testid="logout-button" />
+            </div>
           )}
         </div>
 
@@ -111,13 +124,20 @@ const NavBar = ({
         ))}
 
         {!isAuthenticated
-          ? visibleActions.map(btn => (
+          ? (visibleActions.map(btn => (
               <NavLink key={btn.to} to={btn.to} data-testid={`mobile-${btn.label.toLowerCase()}-button`}>
                 <Button title={btn.label} />
               </NavLink>
             ))
-          : <Button title="Logout" action={logout} data-testid="mobile-logout-button" />
-        }
+          ) : (
+          <div className="flex items-center gap-2">
+            {/* Avatar en mobile */}
+            <button onClick={() => navigate("/myprofile")} className="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
+              {user?.avatar ? <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" /> : <UserCircleIcon className="w-full h-full text-white" />}
+            </button>
+            <Button title="Logout" action={logout} data-testid="mobile-logout-button" />
+          </div>
+        )}
       </div>
     </nav>
   );
