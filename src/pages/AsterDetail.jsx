@@ -68,7 +68,7 @@ todo objeto del universo está sujeto a la fuerza de la gravedad, lo que influye
                       Liam Carter
                     </h3>
                     <span className="text-xs text-text-secondary-light dark:text-text-secondary-dark">
-                      Hace 2 días
+                      Hace 4 días
                     </span>
                   </div>
                   <p className="text-sm text-text-primary-light dark:text-text-primary-dark/90">
