@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"; 
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useAuthStore } from "../store/authStore";
+import  useAuthStore from "../store/authStore";
 import Logo from "../assets/Logo.svg";
 import Button from "./Button"; 
 import { UserCircleIcon } from "@heroicons/react/24/solid";

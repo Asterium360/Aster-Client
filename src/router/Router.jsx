@@ -8,7 +8,7 @@ import About from "../pages/AboutUs";
 import Layout from "../layout/Layout";
 import AsterDetail from "../pages/AsterDetail";
 import AuthForm from "../components/AuthForm";
-import ProtectedRoute from "./protectedRoutes";
+import ProtectedRoute from "../store/protectedRoutes";
 
 
 
@@ -18,7 +18,7 @@ export const AsterRouter = createBrowserRouter([{
     children: [
         {
             index: true,
-            element: <ProtectedRoute><Home /></ProtectedRoute>
+            element: <Home />
         },
         {
             path: "/about",
