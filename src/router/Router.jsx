@@ -8,7 +8,7 @@ import About from "../pages/AboutUs";
 import Layout from "../layout/Layout";
 import AsterDetail from "../pages/AsterDetail";
 import AuthForm from "../components/AuthForm";
-import AsterForm from "../components/AsterForm";
+import ProtectedRoute from "./protectedRoutes";
 
 
 
@@ -18,35 +18,35 @@ export const AsterRouter = createBrowserRouter([{
     children: [
         {
             index: true,
-            element: <Home />
+            element: <ProtectedRoute><Home /></ProtectedRoute>
         },
         {
             path: "/about",
-            element: <About />
+            element: <ProtectedRoute><About /></ProtectedRoute>
         },
         {
             path: "/myprofile",
-            element: <AsterProfile />
+            element: <ProtectedRoute><AsterProfile /></ProtectedRoute>
         },
         {
             path: "/explore",
-            element: <AsterExplore />
+            element:<ProtectedRoute><AsterExplore /></ProtectedRoute>
         },
         {
             path: "/viewpost/:id",
-            element: <AsterDetail />
+            element: <ProtectedRoute><AsterDetail /></ProtectedRoute>
         },
         {
             path: "/newpost",
-            element: <AsterForm />
+            element: <ProtectedRoute><AsterPost /></ProtectedRoute>
         },
         {
             path: "/editpost/:id",
-            element: <AsterPost />
+            element: <ProtectedRoute><AsterPost /></ProtectedRoute>
         },
         {
             path: "/contact",
-            element: <Contact />
+            element: <ProtectedRoute><Contact /></ProtectedRoute>
         },
         /*Rutas para login/register usando el componente de authform */
         {

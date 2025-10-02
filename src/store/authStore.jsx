@@ -1,21 +1,29 @@
-// src/store/authStore.js
 import { create } from "zustand";
 
-export const initialAuthState = {
-    isAuthenticated: false,
+const useAuthStore = create((set) => ({
     user: null,
     token: null,
-};
+    isAuthenticated: false,
 
-export const useAuthStore = create((set, get) => ({
-    ...initialAuthState,
+    login: (userData, token) => {
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(userData));
+        set({ user: userData, token, isAuthenticated: true });
+    },
 
-    // acción para loguear
-    login: (user, token) => set({ isAuthenticated: true, user, token }),
+    logout: () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        set({ user: null, token: null, isAuthenticated: false });
+    },
 
-    // acción para desloguear
-    logout: () => set({ ...initialAuthState }),
-
-    // reset explícito (útil para tests)
-    reset: () => set({ ...initialAuthState }),
+    initialize: () => {
+        const token = localStorage.getItem("token");
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (token && user) {
+            set({ user, token, isAuthenticated: true });
+        }
+    }
 }));
+
+export default useAuthStore;
