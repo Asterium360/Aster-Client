@@ -38,7 +38,7 @@ export const AsterRouter = createBrowserRouter([{
         },
         {
             path: "/newpost",
-            element: <AsterForm />
+            element:<ProtectedRoute><AsterForm /></ProtectedRoute>
         },
         {
             path: "/editpost/:id",
