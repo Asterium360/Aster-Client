@@ -3,7 +3,7 @@ import AsterProfile from "../pages/AsterProfile";
 import AsterExplore from "../pages/AsterExplore";
 import Contact from "../pages/Contact";
 import Home from "../pages/Home";
-import About from "../pages/AboutUs";
+import AboutUs from "../pages/AboutUs";
 import Layout from "../layout/Layout";
 import AsterDetail from "../pages/AsterDetail";
 import AuthForm from "../components/AuthForm";
@@ -22,7 +22,7 @@ export const AsterRouter = createBrowserRouter([{
         },
         {
             path: "/about",
-            element: <ProtectedRoute><About /></ProtectedRoute>
+            element: <ProtectedRoute><AboutUs /></ProtectedRoute>
         },
         {
             path: "/myprofile",
