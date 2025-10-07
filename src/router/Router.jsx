@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import AsterPost from "../pages/AsterPost";
 import AsterProfile from "../pages/AsterProfile";
 import AsterExplore from "../pages/AsterExplore";
 import Contact from "../pages/Contact";
@@ -9,6 +8,7 @@ import Layout from "../layout/Layout";
 import AsterDetail from "../pages/AsterDetail";
 import AuthForm from "../components/AuthForm";
 import ProtectedRoute from "../store/protectedRoutes";
+import AsterForm from "../components/AsterForm";
 
 
 
@@ -38,11 +38,11 @@ export const AsterRouter = createBrowserRouter([{
         },
         {
             path: "/newpost",
-            element: <ProtectedRoute><AsterPost /></ProtectedRoute>
+            element: <AsterForm />
         },
         {
             path: "/editpost/:id",
-            element: <ProtectedRoute><AsterPost /></ProtectedRoute>
+            element: <ProtectedRoute><AsterForm /></ProtectedRoute>
         },
         {
             path: "/contact",
