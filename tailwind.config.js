@@ -16,8 +16,9 @@ export default {
         "accent-primary": "#2f4992", 
         "accent-secondary": "#d2b84d", 
         "accent-additional": "#4f2859", 
-      },
+    },
         },
     },
     plugins: [heroui()],
+    content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
 };

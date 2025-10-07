@@ -9,7 +9,6 @@ import Layout from "../layout/Layout";
 import AsterDetail from "../pages/AsterDetail";
 
 
-
 export const AsterRouter = createBrowserRouter([{
     path: "/",
     element: <Layout />,
