@@ -4,8 +4,8 @@ import { heroui } from "@heroui/react";
 export default {
     content: [
         "./index.html",
-        "./src/**/*.{js,jsx,ts,tsx}", // 👈 detecta todos los archivos de React
-        "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}", // 👈 HeroUI
+        "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}", 
+        "./src/**/*.{js,jsx,ts,tsx}",
     ],
     theme: {
         extend: {
@@ -16,7 +16,11 @@ export default {
         "accent-primary": "#2f4992", 
         "accent-secondary": "#d2b84d", 
         "accent-additional": "#4f2859", 
+<<<<<<< HEAD
     },
+=======
+        },
+>>>>>>> 67da99468c255a1a24629be3db8f6219102194f8
         },
     },
     plugins: [heroui()],
