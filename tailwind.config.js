@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+import { heroui } from "@heroui/react";
+
 export default {
     content: [
         "./index.html",
