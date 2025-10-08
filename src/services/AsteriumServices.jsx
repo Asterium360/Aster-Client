@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const URL_API= "http://localhost:5000/aster"
+// const URL_API= "http://localhost:5000/aster"
+const URL_API = "http://localhost:5001/asterium"; // api fake
 
 //Metodo GET para el READ
 //Para ver TODAS las ASTER (Estrellas)

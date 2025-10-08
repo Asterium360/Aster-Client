@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getAsterById } from "../services/AsteriumServices";
 
@@ -12,52 +12,40 @@ const AsterDetail = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const asterData = await getAsterById (id);
+        const asterData = await getAsterById(id);
         setAster(asterData);
         setError(null);
-        console.log (aster)
-        console.log (asterData)
-      } catch (error) {
-        setError(`Error cargando el post: ${error.message}`);
-
-        errorAlert({
-          title: "Error de carga",
-          message: `No se pudo cargar el post: ${error.message}`
-        });
-
+      } catch (err) {
+        setError(err);
       } finally {
         setLoading(false);
       }
     };
+    fetchData();
+  }, [id]);
 
-    fetchData()
-    }, [id]);
-
-    if (loading) return <div>Loading...</div>;
-    if (error) return <div>Error: {error.message}</div>;
-    if (!aster) return <div>Post doesn't exist</div>;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!aster) return <div>Post doesn't exist</div>;
 
   return (
-  <div className="aster-detail">
+    <div className="aster-detail">
       <h1>{aster.title}</h1>
-      <p><strong>Author:</strong> {aster.author}</p>
-      <p><strong>Date:</strong> {new Date(aster.date).toLocaleDateString()}</p>
+      <p><strong>ID:</strong> {aster.id}</p>
+      <p><strong>Author ID:</strong> {aster.author_id}</p>
+      <p><strong>Date:</strong> {new Date(aster.published_at).toLocaleDateString()}</p>
+      <p><strong>Status:</strong> {aster.status}</p>
+      <p><strong>Like Count:</strong> {aster.like_count}</p>
+      <p><strong>Created At:</strong> {aster.created_at && new Date(aster.created_at).toLocaleString()}</p>
+      <p><strong>Updated At:</strong> {aster.updated_at && new Date(aster.updated_at).toLocaleString()}</p>
 
-      {/* Description or content */}
-      <div className="aster-content">
-        <p>{aster.content}</p>
-      </div>
-
-      {/* Optional: Image */}
-      {aster.image && (
-        <img
-          src={aster.image}
-          alt={aster.title}
-          style={{ maxWidth: "100%", borderRadius: "10px", marginTop: "1rem" }}
-        />
+      {aster.content_md && (
+        <div className="aster-content">
+          <p>{aster.content_md}</p>
+        </div>
       )}
     </div>
   );
 };
 
-  export default AsterDetail;
+export default AsterDetail;
