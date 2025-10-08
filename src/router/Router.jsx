@@ -22,7 +22,7 @@ export const AsterRouter = createBrowserRouter([{
         },
         {
             path: "/about",
-            element: <ProtectedRoute><AboutUs /></ProtectedRoute>
+            element:<ProtectedRoute><AboutUs /></ProtectedRoute> 
         },
         {
             path: "/myprofile",
