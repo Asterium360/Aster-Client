@@ -4,7 +4,8 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { MemoryRouter } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
 import NavBar from "../components/NavBar";
-import '@testing-library/jest-dom';
+import "@testing-library/jest-dom";
+
 
 
 // Mock de Zustand
