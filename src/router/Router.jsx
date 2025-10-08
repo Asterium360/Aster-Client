@@ -8,7 +8,7 @@ import Layout from "../layout/Layout";
 import AsterDetail from "../pages/AsterDetail";
 import AuthForm from "../components/AuthForm";
 import AsterForm from "../components/AsterForm";
-import { routeValidator } from "../../validators/routeValidator";
+import { routeValidator } from "../validators/routeValidator";
 
 
 

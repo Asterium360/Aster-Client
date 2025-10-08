@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { login, register } from "../services/AuthServices"; // 👈 Importa tus servicios
 import { useNavigate } from "react-router-dom";
 import "./css/AuthForm.css";
-import validateAuth from "../../validators/AuthValidator";
+import validateAuth from "../validators/AuthValidator";
 
 const AuthForm = ({ mode = "register" }) => {
     const isRegister = mode === "register";
