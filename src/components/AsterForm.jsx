@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { createAster, getAsterById, updateAster } from "../services/AsteriumServices";
 import { PhotoIcon } from "@heroicons/react/24/solid";
+import validateAsterForm from "../validators/AsterValidator";
+
 
 const categories = [
     "Astronomía General",
@@ -35,6 +37,7 @@ const AsterForm = () => {
     const [previewImage, setPreviewImage] = useState("");
     const [loading, setLoading] = useState(isEdit);
     const [error, setError] = useState(null);
+    const [formErrors, setFormErrors] = useState({});
 
     useEffect(() => {
         if (isEdit) {
@@ -103,6 +106,13 @@ const AsterForm = () => {
             ...form,
             status: publishStatus,
         };
+
+        const validationErrors = validateAsterForm(payload);
+        if (Object.keys(validationErrors).length > 0) {
+            setFormErrors(validationErrors);
+            return;
+        }
+
         try {
             if (isEdit) {
                 await updateAster(id, payload);
@@ -137,6 +147,7 @@ const AsterForm = () => {
                             className="mt-1 block w-full rounded-md bg-gray-800/70 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
                             required
                         />
+                        {formErrors.title && <p className="text-red-500 text-sm mt-1">{formErrors.title}</p>}
                     </div>
 
                     <div>
@@ -164,6 +175,7 @@ const AsterForm = () => {
                                 </option>
                             ))}
                         </select>
+                        {formErrors.category && <p className="text-red-500 text-sm mt-1">{formErrors.category}</p>}
                     </div>
 
                     <div>
@@ -185,6 +197,9 @@ const AsterForm = () => {
                                 className="mt-1 block w-full rounded-md bg-gray-800/70 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
                             />
                         </div>
+                        {formErrors.coverImageUrl && (
+                            <p className="text-red-500 text-sm mt-1">{formErrors.coverImageUrl}</p>
+                        )}
                         {previewImage && (
                             <img src={previewImage} alt="Preview" className="mt-4 w-full rounded-md object-cover max-h-64 border border-gray-700" />
                         )}
@@ -203,6 +218,7 @@ const AsterForm = () => {
                             className="mt-1 block w-full rounded-md bg-gray-800/70 p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white"
                             required
                         />
+                        {formErrors.content && <p className="text-red-500 text-sm mt-1">{formErrors.content}</p>}
                     </div>
 
                     <div className="flex justify-end mt-4 col-span-full gap-3">
