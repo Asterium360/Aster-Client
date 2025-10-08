@@ -46,7 +46,7 @@ export const AsterRouter = createBrowserRouter([{
         },
         {
             path: "/contact",
-            element: <ProtectedRoute><Contact /></ProtectedRoute>
+            element: <Contact />
         },
         /*Rutas para login/register usando el componente de authform */
         {
