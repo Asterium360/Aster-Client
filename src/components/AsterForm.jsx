@@ -92,7 +92,24 @@ const AsterForm = () => {
 
     const handleFileChange = (e) => {
         if (e.target.files && e.target.files[0]) {
-            setForm((prev) => ({ ...prev, coverImageFile: e.target.files[0], coverImageUrl: "" }));
+            const file = e.target.files[0];
+
+            // Validación de tipo de archivo
+            const validTypes = ["image/jpeg", "image/png", "image/webp"];
+            if (!validTypes.includes(file.type)) {
+                alert("❌ Solo se permiten imágenes JPG, PNG o WEBP");
+                return;
+            }
+
+            // Validación de tamaño máximo (5MB)
+            const maxSize = 5 * 1024 * 1024; // 5MB
+            if (file.size > maxSize) {
+                alert("❌ El tamaño máximo permitido es 5MB");
+                return;
+            }
+
+            // Si pasa validaciones, actualizar estado
+            setForm(prev => ({ ...prev, coverImageFile: file, coverImageUrl: "" }));
         }
     };
 
