@@ -11,7 +11,6 @@ import AsterForm from "../components/AsterForm";
 import { routeValidator } from "../validators/routeValidator";
 
 
-
 export const AsterRouter = createBrowserRouter([{
     path: "/",
     element: <Layout />,
