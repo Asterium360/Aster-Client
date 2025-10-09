@@ -25,7 +25,7 @@ const AuthForm = ({ mode = "register" }) => {
                 }
 
                 const newUser = { username: name, email, password };
-                const data = await register(newUser);
+                await register(newUser);
 
                 alert("Usuario registrado con éxito");
                 navigate("/login"); // Redirigir a login

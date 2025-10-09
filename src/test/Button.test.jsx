@@ -1,6 +1,6 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
-// Button.test.jsx
+// src/test/Footer.test.jsx
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Button from './Button';
