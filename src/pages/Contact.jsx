@@ -11,19 +11,19 @@ import React, { useState } from 'react';
 
 const FAQ_ITEMS = [
   {
-    q: "How do I submit a post?",
+    q: "¿Cómo puedo publicar una observación?",
     a:
-      "To submit a post, navigate to the 'Posts' section and click on the 'New Post' button. Follow the on-screen instructions to compose and publish your astronomical observations or thoughts."
+      "Para publicar una observación, dirígete a la sección 'Publicaciones' y haz clic en el botón 'Nueva publicación'. Luego, sigue las instrucciones en pantalla para redactar y compartir tus observaciones o pensamientos astronómicos."
   },
   {
-    q: "What are the guidelines for posting?",
+    q: "¿Cuáles son las normas para publicar?",
     a:
-      "Be respectful, cite sources when necessary, avoid spammable content and follow community rules. Posts that break the rules may be removed by moderators."
+      "Sé respetuoso, cita tus fuentes cuando sea necesario, evita el contenido spam y sigue las reglas de la comunidad. Las publicaciones que no cumplan las normas podrán ser eliminadas por los moderadores."
   },
   {
-    q: "How can I report inappropriate content?",
+    q: "¿Cómo puedo reportar contenido inapropiado?",
     a:
-      "Use the report option on the post or contact the moderation team using this form. Provide a short description and link to the content."
+      "Utiliza la opción de reportar que aparece en la publicación o contacta con el equipo de moderación mediante este formulario. Incluye una breve descripción y el enlace al contenido."
   }
 ];
 
@@ -90,14 +90,16 @@ const Contact = () => {
     <div className="min-h-screen flex flex-col bg-[#0b0d10] text-slate-200 px-6 py-12">
       <div className="max-w-6xl mx-auto">
         <header className="mb-8">
-          <h1 className="text-4xl font-extrabold">Help & Feedback</h1>
-          <p className="text-slate-400 mt-2">Find answers to common questions or send us a message.</p>
+          <h1 className="text-4xl font-extrabold">Ayuda y Comentarios</h1>
+          <p className="text-slate-400 mt-2">Encuentra respuestas a las preguntas más comunes o envíanos un
+            mensaje.</p>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left: FAQ */}
           <section>
-            <h2 className="text-2xl font-semibold mb-6">Frequently Asked Questions</h2>
+            <h2 className="text-2xl font-semibold mb-6">Preguntas Frecuentes
+</h2>
 
             <div className="space-y-4">
               {FAQ_ITEMS.map((item, idx) => {
@@ -128,10 +130,10 @@ const Contact = () => {
 
           {/* Right: Contact Form */}
           <aside>
-            <h2 className="text-2xl font-semibold mb-6">Contact Us</h2>
+            <h2 className="text-2xl font-semibold mb-6">Contáctanos</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
               <label className="block text-sm text-slate-300">
-                <span className="block text-xs text-slate-400 mb-2">Your Name</span>
+                <span className="block text-xs text-slate-400 mb-2">Tu nombre</span>
                 <input
                   type="text"
                   value={name}
@@ -143,7 +145,7 @@ const Contact = () => {
               </label>
 
               <label className="block text-sm text-slate-300">
-                <span className="block text-xs text-slate-400 mb-2">Your Email</span>
+                <span className="block text-xs text-slate-400 mb-2">Tu correo electrónico</span>
                 <input
                   type="email"
                   value={email}
@@ -155,7 +157,7 @@ const Contact = () => {
               </label>
 
               <label className="block text-sm text-slate-300">
-                <span className="block text-xs text-slate-400 mb-2">Your Message</span>
+                <span className="block text-xs text-slate-400 mb-2">Tu mensaje</span>
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
@@ -191,7 +193,7 @@ const Contact = () => {
                     </>
                   ) : (
                     <>
-                      <span>Send Message</span>
+                      <span>Enviar mensaje</span>
                       <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none">
                         <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
