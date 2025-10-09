@@ -1,24 +1,27 @@
 import React, { useState } from "react";
-import { login, register } from "../services/AuthServices"; // 👈 Importa tus servicios
+import { login, register } from "../services/AuthServices";
 import { useNavigate } from "react-router-dom";
-import "./css/AuthForm.css";
+import useAuthStore from "../store/authStore";
 import validateAuth from "../validators/AuthValidator";
+import "./css/AuthForm.css";
 
 const AuthForm = ({ mode = "register" }) => {
     const isRegister = mode === "register";
     const navigate = useNavigate();
 
-    // Estados para los inputs
+    const { login: loginToStore } = useAuthStore();
+
+    // Estados del formulario
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState({});
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        // 1️⃣ Validar
         const validationErrors = validateAuth(
             { name, email, password, confirmPassword },
             mode
@@ -30,27 +33,24 @@ const AuthForm = ({ mode = "register" }) => {
 
         try {
             if (isRegister) {
-                // Verificar contraseñas iguales
-                if (password !== confirmPassword) {
-                    alert("Las contraseñas no coinciden");
-                    return;
-                }
+                // 2️⃣ Registro
                 const newUser = { username: name, email, password };
-                await register(newUser);
-                alert("Usuario registrado con éxito");
-                navigate("/login"); // Redirigir a login
+                const data = await register(newUser);
+
+                // El backend debería devolver { token, user }
+                loginToStore(data.user, data.token);
+                navigate("/explore");
             } else {
+                // 3️⃣ Login
                 const credentials = { email, password };
                 const data = await login(credentials);
 
-                // Guardar token y usuario
-                localStorage.setItem("token", data.token);
-                localStorage.setItem("user", JSON.stringify(data.user));
-                navigate("/explore"); // Redirigir a página protegida
+                loginToStore(data.user, data.token);
+                navigate("/explore");
             }
         } catch (error) {
             console.error("Error en AuthForm:", error);
-            alert("Hubo un error en la autenticación");
+            setErrors({ general: "❌ Error en la autenticación. Verifica tus datos." });
         }
     };
 
@@ -69,10 +69,8 @@ const AuthForm = ({ mode = "register" }) => {
                 />
             </video>
 
-            {/* Overlay oscuro */}
             <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
 
-            {/* Formulario */}
             <form className="form relative z-10" onSubmit={handleSubmit}>
                 <p className="title">{isRegister ? "REGISTRARSE" : "INICIA SESIÓN"}</p>
                 <p className="message">
@@ -80,6 +78,8 @@ const AuthForm = ({ mode = "register" }) => {
                         ? "Registrate y disfruta de las maravillas del universo."
                         : "Bienvenido de vuelta! Inicia Sesión."}
                 </p>
+
+                {errors.general && <p className="error text-center mb-2">{errors.general}</p>}
 
                 {isRegister && (
                     <label>
@@ -129,7 +129,9 @@ const AuthForm = ({ mode = "register" }) => {
                             required
                         />
                         <span>Confirmar Contraseña</span>
-                        {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
+                        {errors.confirmPassword && (
+                            <p className="error">{errors.confirmPassword}</p>
+                        )}
                     </label>
                 )}
 
