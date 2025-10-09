@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { login, register } from "../services/AuthServices"; // 👈 Importa tus servicios
 import { useNavigate } from "react-router-dom";
 import "./css/AuthForm.css";
+import validateAuth from "../validators/AuthValidator";
 
 const AuthForm = ({ mode = "register" }) => {
     const isRegister = mode === "register";
@@ -12,9 +13,20 @@ const AuthForm = ({ mode = "register" }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [errors, setErrors] = useState({});
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const validationErrors = validateAuth(
+            { name, email, password, confirmPassword },
+            mode
+        );
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors);
+            return;
+        }
 
         try {
             if (isRegister) {
@@ -23,10 +35,12 @@ const AuthForm = ({ mode = "register" }) => {
                     alert("Las contraseñas no coinciden");
                     return;
                 }
-
                 const newUser = { username: name, email, password };
                 await register(newUser);
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
                 alert("Usuario registrado con éxito");
                 navigate("/login"); // Redirigir a login
             } else {
@@ -36,7 +50,6 @@ const AuthForm = ({ mode = "register" }) => {
                 // Guardar token y usuario
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("user", JSON.stringify(data.user));
-
                 navigate("/explore"); // Redirigir a página protegida
             }
         } catch (error) {
@@ -47,7 +60,6 @@ const AuthForm = ({ mode = "register" }) => {
 
     return (
         <div className="relative flex justify-center items-center h-screen">
-            {/* 🎥 Video de fondo */}
             <video
                 autoPlay
                 loop
@@ -83,6 +95,7 @@ const AuthForm = ({ mode = "register" }) => {
                             required
                         />
                         <span>Nombre</span>
+                        {errors.name && <p className="error">{errors.name}</p>}
                     </label>
                 )}
 
@@ -95,6 +108,7 @@ const AuthForm = ({ mode = "register" }) => {
                         required
                     />
                     <span>Email</span>
+                    {errors.email && <p className="error">{errors.email}</p>}
                 </label>
 
                 <label>
@@ -106,6 +120,7 @@ const AuthForm = ({ mode = "register" }) => {
                         required
                     />
                     <span>Contraseña</span>
+                    {errors.password && <p className="error">{errors.password}</p>}
                 </label>
 
                 {isRegister && (
@@ -118,6 +133,7 @@ const AuthForm = ({ mode = "register" }) => {
                             required
                         />
                         <span>Confirmar Contraseña</span>
+                        {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
                     </label>
                 )}
 

@@ -1,279 +1,169 @@
 {
-    "aster": [
-        {
-            "id": 1,
-            "title": "James Webb detecta 'cuentas oscuras' inexplicables en la atmósfera de Saturno",
-            "summary": "Observaciones del JWST han mostrado estructuras en forma de cuentas oscuras sobre el polo norte de Saturno, sorprendiendo a los científicos.",
-            "content": "El Telescopio Espacial James Webb (JWST) captó pequeñas estructuras oscuras en la ionosfera de Saturno, junto a un patrón estelar asimétrico en la estratosfera. El hallazgo fue reportado en artículos científicos recientes y discutido por medios especializados.",
-            "author": "Live Science (síntesis)",
-            "source": "Live Science",
-            "url": "https://www.livescience.com/space/completely-unexplained-james-webb-telescope-finds-strange-dark-beads-in-saturns-atmosphere",
-            "image_url": "https://www.livescience.com/space/completely-unexplained-james-webb-telescope-finds-strange-dark-beads-in-saturns-atmosphere",
-            "published_at": "2025-09-22T00:00:00Z",
-            "tags": [
-                "JWST",
-                "planetas",
-                "Saturno",
-                "atmósfera"
-            ],
-            "region": "Internacional",
-            "real": true
-        },
-        {
-            "id": 2,
-            "title": "Nuevo candidato a 'estrella-agujero negro' detectado por JWST",
-            "summary": "Astrónomos proponen una nueva clase de objeto —\"black hole star\"— basada en observaciones del JWST.",
-            "content": "Análisis recientes de datos del JWST sobre objetos conocidos como 'little red dots' sugieren la posibilidad de objetos que combinan agujeros negros muy activos envueltos en gas denso que emiten luz parecida a la estelar.",
-            "author": "Live Science (síntesis)",
-            "source": "Live Science / Astronomy & Astrophysics (estudio)",
-            "url": "https://www.livescience.com/space/black-holes/the-james-webb-telescope-may-have-discovered-a-brand-new-class-of-cosmic-object-the-black-hole-star",
-            "image_url": "https://www.livescience.com/space/black-holes/the-james-webb-telescope-may-have-discovered-a-brand-new-class-of-cosmic-object-the-black-hole-star",
-            "published_at": "2025-09-24T00:00:00Z",
-            "tags": [
-                "JWST",
-                "cosmología",
-                "galaxias",
-                "agujeros negros"
-            ],
-            "region": "Internacional",
-            "real": true
-        },
-        {
-            "id": 3,
-            "title": "La cuenta oficial de exoplanetas confirmados de la NASA alcanza 6,000",
-            "summary": "NASA anuncia que el catálogo oficial supera los 6.000 exoplanetas confirmados.",
-            "content": "El número de exoplanetas confirmados registrados por el NExScI de la NASA ha sobrepasado la marca de 6.000. El conteo continúa en aumento a medida que se confirman candidatos adicionales.",
-            "author": "NASA / Space.com (síntesis)",
-            "source": "NASA / Space.com",
-            "url": "https://www.nasa.gov/universe/exoplanets/nasas-tally-of-planets-outside-our-solar-system-reaches-6000/",
-            "image_url": "https://www.nasa.gov/sites/default/files/styles/full_width/public/images/640x360/nasa_exoplanet_catalog.jpg",
-            "published_at": "2025-09-17T00:00:00Z",
-            "tags": [
-                "exoplanetas",
-                "NASA",
-                "estadísticas"
-            ],
-            "region": "Internacional",
-            "real": true
-        },
-        {
-            "id": 4,
-            "title": "El Webb revela detalles vibrantes en la mayor nube formadora de estrellas de la Vía Láctea",
-            "summary": "Imágenes del JWST muestran una rica estructura de estrellas masivas y polvo en Sagittarius B2.",
-            "content": "Las observaciones con NIRCam y MIRI del JWST han mostrado regiones de formación estelar extremadamente activas y complejas en Sagittarius B2, ayudando a entender procesos de nacimiento estelar masivo.",
-            "author": "NASA (comunicado)",
-            "source": "NASA – Webb mission",
-            "url": "https://science.nasa.gov/missions/webb/nasas-webb-explores-largest-star-forming-cloud-in-milky-way/",
-            "image_url": "https://science.nasa.gov/system/news_items/main_images/10960_sagittarius_b2.jpg",
-            "published_at": "2025-09-24T00:00:00Z",
-            "tags": [
-                "JWST",
-                "formación estelar",
-                "Vía Láctea"
-            ],
-            "region": "Internacional",
-            "real": true
-        },
-        {
-            "id": 5,
-            "title": "ESA lanza NELIOTA-III para vigilar impactos en la Luna",
-            "summary": "Nuevo proyecto europeo ampliará la detección y base de datos de destellos por impactos lunares.",
-            "content": "La ESA inicia NELIOTA-III, un proyecto para mejorar la detección de impactos en la Luna y crear una base de datos abierta (Lunar Impact Flash database) en colaboración con la comunidad científica.",
-            "author": "ESA (comunicado)",
-            "source": "ESA",
-            "url": "https://www.esa.int/Space_Safety/ESA_s_new_project_to_keep_an_eye_on_Moon_strikes",
-            "image_url": "https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2025/09/lunar_impact_observation.jpg",
-            "published_at": "2025-09-23T00:00:00Z",
-            "tags": [
-                "luna",
-                "impactos",
-                "ESA",
-                "observación"
-            ],
-            "region": "Europa",
-            "real": true
-        },
-        {
-            "id": 6,
-            "title": "Imagen del día: la atmósfera de Marte en una paleta 'mille-feuille'",
-            "summary": "Una sonda de la ESA muestra capas coloreadas y delicadas en la atmósfera marciana.",
-            "content": "Recientes imágenes proporcionadas por una misión de la ESA muestran la atmósfera de Marte con capas finas que los expertos han comparado con un 'mille-feuille', revelando detalles de su estructura vertical.",
-            "author": "Space.com (foto del día)",
-            "source": "Space.com / ESA",
-            "url": "https://www.space.com/astronomy/mars/esa-spacecraft-sees-a-kaleidoscope-of-color-in-mars-atmosphere-space-photo-of-the-day-for-sept-26-2025",
-            "image_url": "https://www.space.com/images/mars-atmosphere-kaleidoscope.jpg",
-            "published_at": "2025-09-26T00:00:00Z",
-            "tags": [
-                "Marte",
-                "fotografía",
-                "ESA"
-            ],
-            "region": "Internacional",
-            "real": true
-        },
-        {
-            "id": 7,
-            "title": "Estudio propone telescopio rectangular para encontrar 'Tierra 2.0'",
-            "summary": "Investigadores sugieren que un diseño rectangular permitiría resolver exoplanetas rocosos cercanos con más eficacia.",
-            "content": "Un nuevo estudio explora cómo un espejo rectangular podría mejorar la resolución angular necesaria para detectar y caracterizar planetas similares a la Tierra alrededor de estrellas cercanas.",
-            "author": "Space.com (resumen del estudio)",
-            "source": "Space.com / estudio académico",
-            "url": "https://www.space.com/astronomy/could-a-unique-rectangular-telescope-be-the-key-to-finding-earth-2-0",
-            "image_url": "https://www.space.com/images/rectangular-telescope-concept.jpg",
-            "published_at": "2025-09-01T00:00:00Z",
-            "tags": [
-                "instrumentación",
-                "telescopios",
-                "exoplanetas"
-            ],
-            "region": "Internacional",
-            "real": true
-        },
-        {
-            "id": 8,
-            "title": "Hubble descubre remanente de fusión de enanas blancas",
-            "summary": "El Hubble detecta una enana blanca ultra-masiva que habría formado tras la fusión entre dos enanas blancas.",
-            "content": "Observaciones con el Telescopio Espacial Hubble identificaron un remanente raro que sugiere la formación por fusión de enanas blancas, un hallazgo que aporta detalles al final de la vida de estrellas de baja masa.",
-            "author": "ESA/Hubble (comunicado)",
-            "source": "ESA / Hubble",
-            "url": "https://esahubble.org/news/archive/year/2025/",
-            "image_url": "https://esahubble.org/images/white_dwarf_merger.jpg",
-            "published_at": "2025-08-13T00:00:00Z",
-            "tags": [
-                "Hubble",
-                "enanas blancas",
-                "evolución estelar"
-            ],
-            "region": "Internacional",
-            "real": true
-        },
-        {
-            "id": 9,
-            "title": "Astrónomos detectan un planeta gigante escondido en un sistema conocido",
-            "summary": "Estudios recientes indican la presencia de un planeta masivo (hasta 10 veces Júpiter) emergiendo de una nube protoplanetaria.",
-            "content": "Imágenes y análisis de discos protoplanetarios permitieron identificar señales de un objeto con masa comparable a varios Júpiter alrededor de una estrella joven, sugiriendo formación planetaria activa.",
-            "author": "Space.com (síntesis)",
-            "source": "Space.com",
-            "url": "https://www.space.com/astronomy/exoplanets/astronomers-discover-monster-exoplanet-hiding-in-stellar-fog-around-young-star",
-            "image_url": "https://www.space.com/images/monster-exoplanet-disk.jpg",
-            "published_at": "2025-07-14T00:00:00Z",
-            "tags": [
-                "exoplanetas",
-                "formación planetaria",
-                "discos protoplanetarios"
-            ],
-            "region": "Internacional",
-            "real": true
-        },
-        {
-            "id": 10,
-            "title": "TRAPPIST-1e: JWST busca señales de atmósfera en el planeta habitable",
-            "summary": "Nuevos datos del JWST apuntan a investigar la composición atmosférica de TRAPPIST-1e, un exoplaneta en zona habitable.",
-            "content": "Observaciones con NIRSpec y otros instrumentos del JWST están dirigidas a detectar trazas de gases atmosféricos en TRAPPIST-1e que ayuden a evaluar su potencial habitabilidad.",
-            "author": "Space.com (reportaje)",
-            "source": "Space.com / JWST data",
-            "url": "https://www.space.com/astronomy/exoplanets/does-the-nearby-exoplanet-trappist-1e-support-life-new-james-webb-space-telescope-data-could-help-us-find-out",
-            "image_url": "https://www.space.com/images/trappist-1e-infographic.jpg",
-            "published_at": "2025-09-12T00:00:00Z",
-            "tags": [
-                "TRAPPIST-1",
-                "habitabilidad",
-                "JWST",
-                "exoplanetas"
-            ],
-            "region": "Internacional",
-            "real": true
-        },
-        {
-            "id": 11,
-            "title": "Universidad X usa JWST para revelar estrellas ocultas en una gran guardería estelar",
-            "summary": "Investigadores universitarios informaron cómo Webb detectó estrellas jóvenes en regiones muy enmarañadas de gas y polvo.",
-            "content": "Un equipo universitario publicó hallazgos basados en imágenes del JWST que identifican poblaciones estelares invisibles en longitudes de onda ópticas, contribuyendo al mapa de formación estelar local.",
-            "author": "University of Florida (nota)",
-            "source": "UF News (University of Florida)",
-            "url": "https://news.ufl.edu/2025/09/james-webb-hidden-stars/",
-            "image_url": "https://news.ufl.edu/images/webb_hidden_stars.jpg",
-            "published_at": "2025-09-23T00:00:00Z",
-            "tags": [
-                "investigación",
-                "JWST",
-                "formación estelar",
-                "universidad"
-            ],
-            "region": "Estados Unidos",
-            "real": true
-        },
-        {
-            "id": 12,
-            "title": "Anuncio: misión privada lanzará telescopio dedicado a astrofotografía amateur",
-            "summary": "Empresa privada anuncia planes para desplegar un pequeño telescopio en LEO orientado a astrofotógrafos y educación.",
-            "content": "La compañía StellarView (anuncio de prensa) comunicó que planea lanzar un telescopio de acceso remoto para aficionados y aulas durante 2026; el proyecto aún está en fase de recaudación de fondos.",
-            "author": "Comunicado de prensa (StellarView)",
-            "source": "StellarView (comunicado)",
-            "url": "https://example.com/stellarview-announce-telescope",
-            "image_url": "https://example.com/images/stellarview_telescope.jpg",
-            "published_at": "2025-09-10T00:00:00Z",
-            "tags": [
-                "misiones privadas",
-                "educación",
-                "astrofotografía"
-            ],
-            "region": "Privado",
-            "real": false
-        },
-        {
-            "id": 13,
-            "title": "Estudio ficticio: detectan biofirmas en la atmósfera de un exoplaneta cercano",
-            "summary": "Simulación por ordenador sugiere composición atmosférica compatible con moléculas biológicas en un candidato exoplaneta (entrada ficticia).",
-            "content": "Este registro es inventado para pruebas: investigadores publicaron un estudio simulado que propone la detección de biofirmas; sin embargo, no corresponde a una noticia real.",
-            "author": "Equipo simulado",
-            "source": "Simulación / prueba",
-            "url": "https://example.com/fake-biosignature-study",
-            "image_url": "https://example.com/images/fake_biosignature.jpg",
-            "published_at": "2025-09-05T00:00:00Z",
-            "tags": [
-                "exoplanetas",
-                "biofirmas",
-                "simulación"
-            ],
-            "region": "Ficticio",
-            "real": false
-        },
-        {
-            "id": 14,
-            "title": "Anuncio real: JPL publica nota sobre el conteo de exoplanetas y perspectivas",
-            "summary": "El JPL de la NASA resume el hito de los 6.000 exoplanetas y explica las prioridades futuras en búsqueda de mundos similares a la Tierra.",
-            "content": "El Jet Propulsion Laboratory (JPL) ofrece contexto técnico y destaca misiones futuras que ayudarán a caracterizar atmósferas exoplanetarias y encontrar candidatos rocosos en zonas habitables.",
-            "author": "JPL / NASA",
-            "source": "JPL – NASA",
-            "url": "https://www.jpl.nasa.gov/news/nasas-tally-of-planets-outside-our-solar-system-reaches-6000/",
-            "image_url": "https://www.jpl.nasa.gov/system/resources/detail_files/6000_exoplanets.jpg",
-            "published_at": "2025-09-17T00:00:00Z",
-            "tags": [
-                "JPL",
-                "exoplanetas",
-                "NASA"
-            ],
-            "region": "Estados Unidos",
-            "real": true
-        },
-        {
-            "id": 15,
-            "title": "Noticia ficticia: gran descubrimiento sobre materia oscura con detector subterráneo",
-            "summary": "Registro de prueba: un experimento subterráneo afirmaría una señal directa de materia oscura (falso para tests).",
-            "content": "Entrada creada para poblar la base de datos en pruebas. No representa un avance científico real; sirve sólo como dato ficticio para desarrollo y testeo.",
-            "author": "Equipo de pruebas",
-            "source": "Pruebas internas",
-            "url": "https://example.com/fake-darkmatter-discovery",
-            "image_url": "https://example.com/images/fake_dark_matter.jpg",
-            "published_at": "2025-08-30T00:00:00Z",
-            "tags": [
-                "materia oscura",
-                "experimentos",
-                "ficticio"
-            ],
-            "region": "Ficticio",
-            "real": false
+  "asterium": [
+    {
+      "id": 1,
+      "author_id": 1,
+      "title": "James Webb detecta 'cuentas oscuras' inexplicables en la atmósfera de Saturno",
+      "excerpt": "Observaciones del JWST han mostrado estructuras en forma de cuentas oscuras sobre el polo norte de Saturno.",
+      "content_md": "El Telescopio Espacial **James Webb (JWST)** captó pequeñas estructuras oscuras en la ionosfera de Saturno, junto a un patrón estelar asimétrico en la estratosfera.",
+      "status": "published",
+      "published_at": null,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 2,
+      "author_id": 1,
+      "title": "Nuevo candidato a 'estrella-agujero negro' detectado por JWST",
+      "excerpt": "Astrónomos proponen una nueva clase de objeto —'black hole star'— basada en observaciones del JWST.",
+      "content_md": "Análisis recientes de datos del JWST sobre objetos conocidos como *'little red dots'* sugieren la posibilidad de agujeros negros envueltos en gas denso.",
+      "status": "published",
+      "published_at": null,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 3,
+      "author_id": 2,
+      "title": "La cuenta oficial de exoplanetas confirmados de la NASA alcanza 6,000",
+      "excerpt": "NASA anuncia que el catálogo oficial supera los 6.000 exoplanetas confirmados.",
+      "content_md": "El número de exoplanetas confirmados registrados por el **NExScI de la NASA** ha sobrepasado la marca de 6.000.",
+      "status": "published",
+      "published_at": null,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 4,
+      "author_id": 3,
+      "title": "El Webb revela detalles vibrantes en la mayor nube formadora de estrellas de la Vía Láctea",
+      "excerpt": "Imágenes del JWST muestran una rica estructura de estrellas masivas y polvo en Sagittarius B2.",
+      "content_md": "Las observaciones con **NIRCam** y **MIRI** del JWST muestran regiones de formación estelar extremadamente activas.",
+      "status": "published",
+      "published_at": null,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 5,
+      "author_id": 4,
+      "title": "ESA lanza NELIOTA-III para vigilar impactos en la Luna",
+      "excerpt": "Nuevo proyecto europeo ampliará la detección y base de datos de destellos por impactos lunares.",
+      "content_md": "La ESA inicia **NELIOTA-III**, un proyecto para mejorar la detección de impactos en la Luna y crear una base de datos abierta.",
+      "status": "published",
+      "published_at": null,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 6,
+      "author_id": 4,
+      "title": "Imagen del día: la atmósfera de Marte en una paleta 'mille-feuille'",
+      "excerpt": "Una sonda de la ESA muestra capas coloreadas y delicadas en la atmósfera marciana.",
+      "content_md": "Recientes imágenes de la ESA muestran la atmósfera de Marte con capas finas y coloridas.",
+      "status": "published",
+      "published_at": null,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 7,
+      "author_id": 5,
+      "title": "Estudio propone telescopio rectangular para encontrar 'Tierra 2.0'",
+      "excerpt": "Investigadores sugieren que un diseño rectangular permitiría resolver exoplanetas rocosos cercanos con más eficacia.",
+      "content_md": "Un nuevo estudio explora cómo un espejo rectangular podría mejorar la resolución angular necesaria para detectar planetas similares a la Tierra.",
+      "status": "published",
+      "published_at": null,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 8,
+      "author_id": 6,
+      "title": "Hubble descubre remanente de fusión de enanas blancas",
+      "excerpt": "El Hubble detecta una enana blanca ultra-masiva tras la fusión de dos enanas blancas.",
+      "content_md": "Observaciones con el **Hubble** identificaron un remanente raro que sugiere la formación por fusión de enanas blancas.",
+      "status": "published",
+      "published_at": null,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 9,
+      "author_id": 7,
+      "title": "Astrónomos detectan un planeta gigante escondido en un sistema conocido",
+      "excerpt": "Estudios recientes indican la presencia de un planeta masivo emergiendo de una nube protoplanetaria.",
+      "content_md": "Imágenes de discos protoplanetarios revelan señales de un objeto con masa de varios Júpiter alrededor de una estrella joven.",
+      "status": "published",
+      "published_at": null,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 10,
+      "author_id": 8,
+      "title": "TRAPPIST-1e: JWST busca señales de atmósfera en el planeta habitable",
+      "excerpt": "Nuevos datos del JWST apuntan a investigar la composición atmosférica de TRAPPIST-1e.",
+      "content_md": "Observaciones con **NIRSpec** del JWST buscan trazas de gases atmosféricos en TRAPPIST-1e.",
+      "status": "published",
+      "published_at": null,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 11,
+      "author_id": 9,
+      "title": "Universidad X usa JWST para revelar estrellas ocultas en una gran guardería estelar",
+      "excerpt": "Investigadores universitarios informaron cómo Webb detectó estrellas jóvenes en regiones de gas y polvo.",
+      "content_md": "Un equipo universitario publicó hallazgos basados en imágenes del JWST que identifican poblaciones estelares invisibles en longitudes ópticas.",
+      "status": "published",
+      "published_at": null,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 12,
+      "author_id": 10,
+      "title": "Anuncio: misión privada lanzará telescopio dedicado a astrofotografía amateur",
+      "excerpt": "Empresa privada anuncia planes para desplegar un telescopio orientado a educación y aficionados.",
+      "content_md": "La compañía **StellarView** planea lanzar un telescopio remoto para aficionados y aulas en 2026.",
+      "status": "draft",
+      "published_at": null,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 13,
+      "author_id": 11,
+      "title": "Estudio ficticio: detectan biofirmas en la atmósfera de un exoplaneta cercano",
+      "excerpt": "Simulación por ordenador sugiere composición atmosférica compatible con moléculas biológicas.",
+      "content_md": "Registro inventado para pruebas: estudio simulado que propone detección de biofirmas, no real.",
+      "status": "archived",
+      "published_at": null,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 14,
+      "author_id": 12,
+      "title": "Anuncio real: JPL publica nota sobre el conteo de exoplanetas y perspectivas",
+      "excerpt": "El JPL de la NASA resume el hito de los 6.000 exoplanetas y prioridades futuras.",
+      "content_md": "El **Jet Propulsion Laboratory (JPL)** destaca misiones futuras para caracterizar atmósferas exoplanetarias.",
+      "status": "published",
+      "published_at": null,
+      "created_at": null,
+      "updated_at": null
+    },
+    {
+      "id": 15,
+      "author_id": 13,
+      "title": "Noticia ficticia: gran descubrimiento sobre materia oscura con detector subterráneo",
+      "excerpt": "Registro de prueba: un experimento subterráneo afirmaría una señal directa de materia oscura.",
+      "content_md": "Entrada creada para poblar la base de datos en pruebas. No representa un avance real.",
+      "status": "archived",
+      "published_at": null,
+      "created_at": null,
+      "updated_at": null
         }
     ]
 }
