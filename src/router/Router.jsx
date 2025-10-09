@@ -7,9 +7,8 @@ import AboutUs from "../pages/AboutUs";
 import Layout from "../layout/Layout";
 import AsterDetail from "../pages/AsterDetail";
 import AuthForm from "../components/AuthForm";
-import ProtectedRoute from "../store/protectedRoutes";
 import AsterForm from "../components/AsterForm";
-
+import { routeValidator } from "../validators/routeValidator";
 
 
 export const AsterRouter = createBrowserRouter([{
@@ -22,31 +21,38 @@ export const AsterRouter = createBrowserRouter([{
         },
         {
             path: "/about",
-            element: <ProtectedRoute><AboutUs /></ProtectedRoute>
+            element:<AboutUs />,
+            loader: routeValidator,
         },
         {
             path: "/myprofile",
-            element: <ProtectedRoute><AsterProfile /></ProtectedRoute>
+            element: <AsterProfile />,
+            loader: routeValidator,
         },
         {
             path: "/explore",
-            element:<ProtectedRoute><AsterExplore /></ProtectedRoute>
+            element:<AsterExplore />,
+            loader: routeValidator,
         },
         {
             path: "/viewpost/:id",
-            element: <ProtectedRoute><AsterDetail /></ProtectedRoute>
+            element: <AsterDetail />,
+            loader: routeValidator,
         },
         {
             path: "/newpost",
-            element:<ProtectedRoute><AsterForm /></ProtectedRoute>
+            element:<AsterForm />,
+            loader: routeValidator,
         },
         {
             path: "/editpost/:id",
-            element: <ProtectedRoute><AsterForm /></ProtectedRoute>
+            element: <AsterForm />,
+            loader: routeValidator,
         },
         {
             path: "/contact",
-            element: <ProtectedRoute><Contact /></ProtectedRoute>
+            element: <Contact />,
+            loader: routeValidator,
         },
         /*Rutas para login/register usando el componente de authform */
         {

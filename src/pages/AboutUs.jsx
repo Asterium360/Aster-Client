@@ -134,7 +134,7 @@ function AboutUs() {
               </p>
               <a
                 className="mt-6 inline-block rounded-full bg-accent-primary px-6 sm:px-8 py-2 sm:py-3 font-bold text-white transition-transform duration-300 hover:scale-105"
-                href="mailto:contact@asterium.com"
+                href="mailto:equipoasterium@gmail.com"
               >
                 equipoasterium@gmail.com
               </a>

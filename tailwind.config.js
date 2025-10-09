@@ -10,7 +10,7 @@ export default {
     theme: {
         extend: {
         colors: {
-        background: "#02060D",      
+        "background": "#02060D",      
         "text-primary": "#ede6c7",   
         "text-secondary": "#5f5d7b", 
         "accent-primary": "#2f4992", 
@@ -20,4 +20,5 @@ export default {
         },
     },
     plugins: [heroui()],
+    content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
 };
