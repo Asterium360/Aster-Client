@@ -31,13 +31,15 @@ const AsterDetail = () => {
   return (
     <div className="aster-detail">
       <h1>{aster.title}</h1>
-      <p><strong>ID:</strong> {aster.id}</p>
-      <p><strong>Author ID:</strong> {aster.author_id}</p>
+
+      {/* Убрали ID и author_id */}
+      {/* <p><strong>ID:</strong> {aster.id}</p> */}
+      {/* <p><strong>Author ID:</strong> {aster.author_id}</p> */}
+
       <p><strong>Date:</strong> {new Date(aster.published_at).toLocaleDateString()}</p>
       <p><strong>Status:</strong> {aster.status}</p>
-      <p><strong>Like Count:</strong> {aster.like_count}</p>
-      <p><strong>Created At:</strong> {aster.created_at && new Date(aster.created_at).toLocaleString()}</p>
-      <p><strong>Updated At:</strong> {aster.updated_at && new Date(aster.updated_at).toLocaleString()}</p>
+
+
 
       {aster.content_md && (
         <div className="aster-content">
