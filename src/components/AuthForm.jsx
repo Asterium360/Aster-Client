@@ -35,13 +35,14 @@ const AuthForm = ({ mode = "register" }) => {
                     alert("Las contraseñas no coinciden");
                     return;
                 }
-                const newUser = { username: name, email, password };
+                const newUser = { email, username: name, password, display_name: name };
                 await register(newUser);
+                console.log("Respuesta del backend (register):", data);
                 alert("Usuario registrado con éxito");
                 navigate("/login"); // Redirigir a login
             } else {
                 const credentials = { email, password };
-                const data = await login(credentials);
+                await login(credentials);
 
                 // Guardar token y usuario
                 localStorage.setItem("token", data.token);
@@ -50,7 +51,6 @@ const AuthForm = ({ mode = "register" }) => {
             }
         } catch (error) {
             console.error("Error en AuthForm:", error);
-            alert("Hubo un error en la autenticación");
         }
     };
 
