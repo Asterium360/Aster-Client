@@ -10,7 +10,7 @@ const AsterForm = () => {
     const navigate = useNavigate();
     const isEdit = Boolean(id);
 
-    const { user } = useAuthStore(); 
+    const { user } = useAuthStore(); // ✅ obtenemos usuario logueado
 
     const [form, setForm] = useState({
         title: "",
