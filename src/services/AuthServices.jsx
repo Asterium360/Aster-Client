@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL_API= " http://localhost:4000/auth"
+const URL_API= "http://localhost:4000/auth"
 
 //Login 
 export const login = async (credentials) => {
