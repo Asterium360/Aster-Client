@@ -34,10 +34,11 @@ const AuthForm = ({ mode = "register" }) => {
         try {
             if (isRegister) {
                 // 2️⃣ Registro
-                const newUser = { username: name, email, password };
+                const newUser = { username: name, email, password, display_name: name };
                 const data = await register(newUser);
 
                 // El backend debería devolver { token, user }
+                if (data.token && data.user) {
                 loginToStore(data.user, data.token);
                 navigate("/explore");
             } else {
@@ -48,7 +49,7 @@ const AuthForm = ({ mode = "register" }) => {
                 loginToStore(data.user, data.token);
                 navigate("/explore");
             }
-        } catch (error) {
+        }} catch (error) {
             console.error("Error en AuthForm:", error);
             setErrors({ general: "❌ Error en la autenticación. Verifica tus datos." });
         }
