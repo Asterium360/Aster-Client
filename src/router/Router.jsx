@@ -52,7 +52,7 @@ export const AsterRouter = createBrowserRouter([{
         {
             path: "/contact",
             element: <Contact />,
-            loader: routeValidator,
+            //loader: routeValidator,
         },
         /*Rutas para login/register usando el componente de authform */
         {
