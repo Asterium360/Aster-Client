@@ -87,7 +87,7 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#0b0d10] text-slate-200 px-6 py-12">
+    <div className="min-h-screen flex flex-col bg-background text-slate-200 px-6 py-12">
       <div className="max-w-6xl mx-auto">
         <header className="mb-8">
           <h1 className="text-4xl font-extrabold">Ayuda y Comentarios</h1>
