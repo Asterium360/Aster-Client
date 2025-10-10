@@ -8,7 +8,6 @@ import "./css/AuthForm.css";
 const AuthForm = ({ mode = "register" }) => {
     const isRegister = mode === "register";
     const navigate = useNavigate();
-
     const { login: loginToStore } = useAuthStore();
 
     // Estados del formulario
@@ -21,7 +20,7 @@ const AuthForm = ({ mode = "register" }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // 1️⃣ Validar
+        // 1️⃣ Validación
         const validationErrors = validateAuth(
             { name, email, password, confirmPassword },
             mode
@@ -34,24 +33,44 @@ const AuthForm = ({ mode = "register" }) => {
         try {
             if (isRegister) {
                 // 2️⃣ Registro
-                const newUser = { username: name, email, password, display_name: name };
+                const newUser = {
+                    username: name,
+                    email,
+                    password,
+                    display_name: name, 
+                };
+
                 const data = await register(newUser);
 
-                // El backend debería devolver { token, user }
+                // 3️⃣ Guardar token y usuario si el backend devuelve ambos
                 if (data.token && data.user) {
-                loginToStore(data.user, data.token);
-                navigate("/explore");
+                    loginToStore(data.user, data.token);
+                    navigate("/explore");
+                } else {
+                    alert("❗ Registro completado, pero no se recibió token. Por favor inicia sesión.");
+                    navigate("/login");
+                }
             } else {
-                // 3️⃣ Login
+                // 4️⃣ Login
                 const credentials = { email, password };
                 const data = await login(credentials);
 
-                loginToStore(data.user, data.token);
-                navigate("/explore");
+                if (data.token && data.user) {
+                    loginToStore(data.user, data.token);
+                    navigate("/explore");
+                } else {
+                    alert("❌ Error en login: token no recibido");
+                }
             }
-        }} catch (error) {
+        } catch (error) {
             console.error("Error en AuthForm:", error);
-            setErrors({ general: "❌ Error en la autenticación. Verifica tus datos." });
+            if (error.response && error.response.status === 409) {
+                setErrors({ general: "❗ El email ya está en uso" });
+            } else if (error.response && error.response.status === 400) {
+                setErrors({ general: "❌ Datos incorrectos. Revisa el formulario." });
+            } else {
+                setErrors({ general: "❌ Error de autenticación. Intenta de nuevo." });
+            }
         }
     };
 
@@ -76,7 +95,7 @@ const AuthForm = ({ mode = "register" }) => {
                 <p className="title">{isRegister ? "REGISTRARSE" : "INICIA SESIÓN"}</p>
                 <p className="message">
                     {isRegister
-                        ? "Registrate y disfruta de las maravillas del universo."
+                        ? "Regístrate y disfruta de las maravillas del universo."
                         : "Bienvenido de vuelta! Inicia Sesión."}
                 </p>
 
