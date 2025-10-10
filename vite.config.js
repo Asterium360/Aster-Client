@@ -7,7 +7,6 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-<<<<<<< HEAD
   // === Configuración de Vitest integrada ===
   test: {
     globals: true,                       // habilita describe/test/expect como globals (estilo Jest)
@@ -16,10 +15,5 @@ export default defineConfig({
     include: ['src/**/*.{test,spec}.{js,jsx,ts,tsx}'], // patrones de test comunes
     // opcional: timeout por test (ms)
     // testTimeout: 5000,
-=======
-  test: {
-    globals: true,
-    environment: 'jsdom',
->>>>>>> develop
   },
 })

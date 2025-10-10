@@ -37,10 +37,6 @@ const AuthForm = ({ mode = "register" }) => {
                 }
                 const newUser = { username: name, email, password };
                 await register(newUser);
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
                 alert("Usuario registrado con éxito");
                 navigate("/login"); // Redirigir a login
             } else {
