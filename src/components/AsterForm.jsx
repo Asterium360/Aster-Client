@@ -10,7 +10,7 @@ const AsterForm = () => {
     const navigate = useNavigate();
     const isEdit = Boolean(id);
 
-    const { user } = useAuthStore(); // ✅ obtenemos usuario logueado
+    const { user } = useAuthStore();
 
     const [form, setForm] = useState({
         title: "",
@@ -59,7 +59,7 @@ const AsterForm = () => {
         const payload = {
             ...form,
             status: publishStatus,
-            author_id: user.id, // ✅ autor directo desde el store
+            author_id: user.id,
         };
 
         const validationErrors = validateAsterForm(payload);
@@ -87,10 +87,26 @@ const AsterForm = () => {
     if (error) return <p className="text-center text-red-500">{error}</p>;
 
     return (
-        <div className="max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-md" style={{ backgroundColor: "#02060D" }}>
+        <div
+            className="max-w-4xl mx-auto p-6 mt-10 rounded-xl shadow-md"
+            style={{ backgroundColor: "#02060D" }}
+        >
+            {/* Botón de volver */}
+            <div className="mb-4">
+                <Button
+                    title="← Volver"
+                    tooltip={isEdit ? "Volver al detalle" : "Volver a la lista"}
+                    action={() => {
+                        if (isEdit) navigate(`/viewpost/${id}`);
+                        else navigate("/explore");
+                    }}
+                />
+            </div>
+
             <h2 className="text-2xl font-bold mb-4 text-center text-white">
                 {isEdit ? "✏️ Editar Post" : "📝 Crear Nuevo Post"}
             </h2>
+
             <form className="grid grid-cols-1 gap-6">
                 <div>
                     <label className="block text-sm font-medium text-white">Título</label>
@@ -102,7 +118,9 @@ const AsterForm = () => {
                         className="mt-1 block w-full rounded-md bg-gray-800/70 p-2 text-white"
                         required
                     />
-                    {formErrors.title && <p className="text-red-500 text-sm mt-1">{formErrors.title}</p>}
+                    {formErrors.title && (
+                        <p className="text-red-500 text-sm mt-1">{formErrors.title}</p>
+                    )}
                 </div>
 
                 <div>
@@ -115,7 +133,9 @@ const AsterForm = () => {
                         className="mt-1 block w-full rounded-md bg-gray-800/70 p-2 text-white"
                         required
                     />
-                    {formErrors.content_md && <p className="text-red-500 text-sm mt-1">{formErrors.content_md}</p>}
+                    {formErrors.content_md && (
+                        <p className="text-red-500 text-sm mt-1">{formErrors.content_md}</p>
+                    )}
                 </div>
 
                 <div>
@@ -128,7 +148,9 @@ const AsterForm = () => {
                         className="mt-1 block w-full rounded-md bg-gray-800/70 p-2 text-white"
                         placeholder="https://ejemplo.com/imagen.jpg"
                     />
-                    {formErrors.image_url && <p className="text-red-500 text-sm mt-1">{formErrors.image_url}</p>}
+                    {formErrors.image_url && (
+                        <p className="text-red-500 text-sm mt-1">{formErrors.image_url}</p>
+                    )}
                 </div>
 
                 <div className="flex justify-end mt-4 gap-3">

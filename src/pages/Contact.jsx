@@ -1,14 +1,5 @@
 import React, { useState } from 'react';
 
-
-/**
- * Contact.jsx
- * Página de Contacto estilo "Asterium" usando Tailwind.
- * - FAQ acordeón a la izquierda
- * - Formulario a la derecha
- * - Envío POST a /api/contact
- */
-
 const FAQ_ITEMS = [
   {
     q: "¿Cómo puedo publicar una observación?",

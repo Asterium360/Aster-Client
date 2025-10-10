@@ -34,6 +34,7 @@ export const routeValidator = async ({ params }) => {
             return redirect("/not-found");
         }
     }
+    return null;
 }
     // 4️⃣ Validaciones adicionales
     // Por ejemplo, aquí podrías verificar que el token siga siendo válido haciendo ping a tu backend

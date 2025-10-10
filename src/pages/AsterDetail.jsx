@@ -4,7 +4,7 @@ import { getAsterById } from "../services/AsteriumServices";
 
 const AsterDetail = () => {
   const { id } = useParams();
-  const [aster, setAster] = useState(null);
+  const [asterium, setAsterium] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -12,8 +12,8 @@ const AsterDetail = () => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const asterData = await getAsterById(id);
-        setAster(asterData);
+        const data = await getAsterById(id);
+        setAsterium(data);
         setError(null);
       } catch (err) {
         setError(err);
@@ -24,26 +24,35 @@ const AsterDetail = () => {
     fetchData();
   }, [id]);
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  if (!aster) return <div>Post doesn't exist</div>;
+  if (loading) return <div className="text-center text-white mt-10">Cargando...</div>;
+  if (error) return <div className="text-center text-red-500 mt-10">Error: {error.message}</div>;
+  if (!asterium) return <div className="text-center text-white mt-10">El post no existe</div>;
 
   return (
-    <div className="aster-detail">
-      <h1>{aster.title}</h1>
+    <div className="max-w-3xl mx-auto p-6 text-white">
+      {/* Imagen destacada */}
+      {asterium.image_url && (
+        <img
+          src={asterium.image_url}
+          alt={asterium.title}
+          className="w-full max-h-[400px] object-cover rounded mb-6"
+        />
+      )}
 
-      {/* Убрали ID и author_id */}
-      {/* <p><strong>ID:</strong> {aster.id}</p> */}
-      {/* <p><strong>Author ID:</strong> {aster.author_id}</p> */}
+      {/* Título */}
+      <h1 className="text-3xl font-bold mb-2">{asterium.title}</h1>
 
-      <p><strong>Date:</strong> {new Date(aster.published_at).toLocaleDateString()}</p>
-      <p><strong>Status:</strong> {aster.status}</p>
+      {/* Fecha */}
+      <p className="text-gray-400 text-sm mb-6">
+        {asterium.published_at
+          ? new Date(asterium.published_at).toLocaleDateString()
+          : new Date(asterium.created_at).toLocaleDateString()}
+      </p>
 
-
-
-      {aster.content_md && (
-        <div className="aster-content">
-          <p>{aster.content_md}</p>
+      {/* Contenido */}
+      {asterium.content_md && (
+        <div className="prose prose-invert max-w-none whitespace-pre-wrap leading-relaxed">
+          {asterium.content_md}
         </div>
       )}
     </div>
