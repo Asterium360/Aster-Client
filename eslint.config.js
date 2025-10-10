@@ -26,4 +26,22 @@ export default defineConfig([
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
     },
   },
+
+  // === Override para archivos de test (Jest) ===
+  {
+    files: ['**/*.{test,spec}.{js,jsx}', '**/tests/**/*.{js,jsx}'],
+    languageOptions: {
+      // añadimos las globals de jest para que ESLint reconozca describe/test/expect/etc.
+      globals: {
+        ...globals.browser,
+        ...globals.jest,
+      },
+    },
+    // Opcional: reglas específicas para tests (ejemplo: no fallar por console.* en tests)
+    rules: {
+      'no-console': 'off',
+    },
+  },
 ])
+
+

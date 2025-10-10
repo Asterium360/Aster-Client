@@ -21,13 +21,12 @@ const validateAuth = (data, mode = "register") => {
     }
 
     // Contraseña
-    const passwordPattern =
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_\-+=\[\]{};:'",.<>/?\\|`~]).{8,}$/;
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z]).{5,}$/;
     if (!data.password) {
         errors.password = "❗ La contraseña es obligatoria.";
     } else if (!passwordPattern.test(data.password)) {
         errors.password =
-            "❗ La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y un carácter especial.";
+            "❗ La contraseña debe tener al menos 5 caracteres, con al menos una mayúscula y una minúscula.";
     }
 
     // Confirmar contraseña (solo en registro)

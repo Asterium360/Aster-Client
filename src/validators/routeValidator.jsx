@@ -29,33 +29,33 @@ export const routeValidator = async ({ params }) => {
                 // No tiene permisos → redirigir a explore
                 return redirect("/explore");
             }
-        } catch (err) {
+        } catch (error) {
             // Si no existe el post o hubo error → redirigir a not found
             return redirect("/not-found");
         }
     }
-
+}
     // 4️⃣ Validaciones adicionales
     // Por ejemplo, aquí podrías verificar que el token siga siendo válido haciendo ping a tu backend
-    const tokenValid = await checkTokenValidity(token);
-    if (!tokenValid) {
-        return redirect("/login");
-    }
+    //const tokenValid = await checkTokenValidity(token);
+    //if (!tokenValid) {
+     //   return redirect("/login");
+    //}
+   // return null;}
 
-    return null;
-};
 
-/**
+/*
  * Función ejemplo para validar token
  * Ajusta según tu endpoint de backend
 
 async function checkTokenValidity(token) {
     try {
-        const res = await fetch("https://tu-backend.com/auth/validate-token", {
+        const res = await fetch("https://localhost:4000/auth/validate-token", {
             headers: { Authorization: `Bearer ${token}` },
         });
         return res.ok;
     } catch {
         return false;
     }
-}*/
+}
+*/
