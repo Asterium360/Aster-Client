@@ -98,8 +98,8 @@ const ExplorePage =() => {
               onChange={(e) => setSort(e.target.value)}
               className="p-2 rounded bg-white/5 text-white"
             >
-              <option value="recent">Más recientes</option>
-              <option value="oldest">Más antiguos</option>
+              <option className="bg-[#02060D] text-white" value="recent">Más recientes</option>
+              <option className="bg-[#02060D] text-white" value="oldest">Más antiguos</option>
             </select>
 
             <button

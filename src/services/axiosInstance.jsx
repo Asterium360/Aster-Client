@@ -2,7 +2,7 @@ import axios from "axios";
 import useAuthStore from "../store/authStore";
 
 const API = axios.create({
-    baseURL: "http://localhost:4000/asterium"
+    baseURL: "http://localhost:4000"
 });
 
 // Interceptor para agregar token en cada petición

@@ -82,7 +82,7 @@ const AsterDetail = () => {
     <>
       <Button
         title="Editar"
-        action={() => navigate(`/edit/${id}`)}
+        action={() => navigate(`/editpost/${id}`)}
       />
       <Button
         title="Eliminar"
