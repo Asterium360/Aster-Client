@@ -152,7 +152,7 @@ const Contact = () => {
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Tell us about the pale blue dot..."
+                  placeholder="Cuentanos tu experiencia..."
                   rows={5}
                   className="w-full bg-[#0b0f13] border border-[#22252a] rounded-lg px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-700 resize-none"
                   aria-label="Tu mensaje"
