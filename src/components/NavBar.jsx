@@ -25,6 +25,10 @@ const NavBar = ({ logo = Logo }) => {
     { label: "Contact", to: "/contact" },
   ];
 
+  const adminLinks = [
+    { label: "Admin", to: "/admin" }
+  ];
+
   const actions = [
     { label: "Login", to: "/login" },
     { label: "SignUp", to: "/register" },
@@ -52,15 +56,29 @@ const NavBar = ({ logo = Logo }) => {
               key={link.to}
               to={link.to}
               className={({ isActive }) =>
-                `px-2 py-1 rounded-md hover:bg-gray-700 ${
-                  isActive ? "bg-gray-900 font-bold" : ""
-                }`
+                `px-2 py-1 rounded-md hover:bg-gray-700 ${isActive ? "bg-gray-900 font-bold" : ""}`
               }
               data-testid={`link-${link.label.toLowerCase()}`}
             >
               {link.label}
             </NavLink>
           ))}
+
+          {/* Link para admin */}
+          {user?.role === "admin" &&
+            adminLinks.map(link => (
+              <NavLink
+                key={link.to}
+                to={link.to}
+                className={({ isActive }) =>
+                  `px-2 py-1 rounded-md hover:bg-gray-700 ${isActive ? "bg-gray-900 font-bold" : ""}`
+                }
+                data-testid={`link-${link.label.toLowerCase()}`}
+              >
+                {link.label}
+              </NavLink>
+            ))
+          }
         </div>
 
         {/* Acciones derecha */}
@@ -73,14 +91,14 @@ const NavBar = ({ logo = Logo }) => {
             ))
           ) : (
             <div className="flex items-center gap-2">
-              <button onClick={() => navigate("/asterprofile")} className="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
+              <button onClick={() => navigate("/myprofile")} className="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
                 {user?.avatar ? (
                   <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" />
                 ) : (
                   <UserCircleIcon className="w-full h-full text-white" />
                 )}
               </button>
-              <Button title="Logout" action={logout} data-testid="logout-button" />
+              <Button title="Logout" action={()=>{logout(); navigate("/")}} data-testid="logout-button" />
             </div>
           )}
         </div>
@@ -105,15 +123,29 @@ const NavBar = ({ logo = Logo }) => {
             key={link.to}
             to={link.to}
             className={({ isActive }) =>
-              `px-2 py-2 rounded-md hover:bg-gray-700 ${
-                isActive ? "bg-gray-900 font-bold" : ""
-              }`
+              `px-2 py-2 rounded-md hover:bg-gray-700 ${isActive ? "bg-gray-900 font-bold" : ""}`
             }
             data-testid={`mobile-link-${link.label.toLowerCase()}`}
           >
             {link.label}
           </NavLink>
         ))}
+
+        {/* Link admin en mobile */}
+        {user?.role === "admin" &&
+          adminLinks.map(link => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) =>
+                `px-2 py-2 rounded-md hover:bg-gray-700 ${isActive ? "bg-gray-900 font-bold" : ""}`
+              }
+              data-testid={`mobile-link-${link.label.toLowerCase()}`}
+            >
+              {link.label}
+            </NavLink>
+          ))
+        }
 
         {!isAuthenticated
           ? visibleActions.map(btn => (
@@ -126,7 +158,7 @@ const NavBar = ({ logo = Logo }) => {
               <button onClick={() => navigate("/myprofile")} className="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
                 {user?.avatar ? <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" /> : <UserCircleIcon className="w-full h-full text-white" />}
               </button>
-              <Button title="Logout" action={logout} data-testid="mobile-logout-button" />
+              <Button title="Logout" action={()=>{logout(); navigate("/")}} data-testid="mobile-logout-button" />
             </div>
           )
         }

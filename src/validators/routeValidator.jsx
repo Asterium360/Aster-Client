@@ -5,37 +5,45 @@ import { getAsterById } from "../services/AsteriumServices";
  * Loader para validar rutas protegidas en React Router v6.14+
  * @param {Object} args - Argumentos que React Router pasa al loader
  * @param {Object} args.params - Los parámetros de la ruta (:id, etc.)
+ * @param {Object} args.request - La petición, útil para saber la URL
  */
-export const routeValidator = async ({ params }) => {
+export const routeValidator = async ({ params, request }) => {
     // 1️⃣ Verificar si el usuario está logueado
     const token = localStorage.getItem("token");
     if (!token) {
-        // No hay token → redirigir al login
         return redirect("/login");
     }
 
-    // 2️⃣ Validación de ID en rutas dinámicas
+    // 2️⃣ Obtener usuario del localStorage
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    // 3️⃣ Validación de ID en rutas dinámicas
     if (params.id && isNaN(Number(params.id))) {
-        // ID no es numérico → redirigir a Not Found
         return redirect("/not-found");
     }
 
-    // 3️⃣ Validar permisos (solo autor puede editar)
-    const user = JSON.parse(localStorage.getItem("user"));
+    // 4️⃣ Validar permisos de autor para posts
     if (params.id) {
         try {
-            const post = await getAsterById(params.id); 
-            if (post.authorId !== user.id) {
-                // No tiene permisos → redirigir a explore
+            const post = await getAsterById(params.id);
+            // Solo el autor o admin puede editar
+            if (post.authorId !== user.id && user.role !== "admin") {
                 return redirect("/explore");
             }
         } catch (error) {
-            // Si no existe el post o hubo error → redirigir a not found
             return redirect("/not-found");
         }
     }
-}
-    // 4️⃣ Validaciones adicionales
+
+    // 5️⃣ Validar que solo admins puedan acceder al dashboard
+    if (request.url.includes("/admin") && user.role !== "admin") {
+        return redirect("/"); // Redirige a home si no es admin
+    }
+
+    return null;
+};
+
+    //  Validaciones adicionales
     // Por ejemplo, aquí podrías verificar que el token siga siendo válido haciendo ping a tu backend
     //const tokenValid = await checkTokenValidity(token);
     //if (!tokenValid) {
