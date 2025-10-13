@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
 
+import React, { useEffect, useMemo, useState } from 'react';
+import { sendContact } from '../services/ContactService';
 
 /**
  * Contact.jsx
@@ -27,11 +28,23 @@ const FAQ_ITEMS = [
   }
 ];
 
-
 const Contact = () => {
-  // Form state
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  // --- NUEVO: detectar usuario logueado desde localStorage ---
+  const storedUser = useMemo(() => {
+    if (typeof window === 'undefined') return null;
+    try {
+      return JSON.parse(localStorage.getItem('user') || 'null');
+    } catch {
+      return null;
+    }
+  }, []);
+  const isLogged = !!storedUser?.id;
+
+  // Form state (se inicializa con los datos del usuario si está logueado)
+  const [name, setName] = useState(
+    isLogged ? (storedUser?.display_name || storedUser?.username || '') : ''
+  );
+  const [email, setEmail] = useState(isLogged ? (storedUser?.email || '') : '');
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState(null); // { type: 'success' | 'error', message: string }
@@ -39,14 +52,24 @@ const Contact = () => {
   // FAQ accordion state
   const [openIndex, setOpenIndex] = useState(0);
 
-  // Validación simple
+  // --- NUEVO: si el usuario cambia en otra parte, sincroniza campos ---
+  useEffect(() => {
+    if (isLogged) {
+      setName(storedUser?.display_name || storedUser?.username || '');
+      setEmail(storedUser?.email || '');
+    }
+  }, [isLogged, storedUser]);
+
+  // Validación simple (si está logueado, no exigimos nombre/correo)
   const validate = () => {
-    if (!name.trim()) return "Por favor ingresa tu nombre.";
-    if (!email.trim()) return "Por favor ingresa tu correo.";
-    // email básico
-    // NOTE: para validación más sólida usar una librería o regex más completa
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) return "Por favor ingresa un correo válido.";
+    if (!isLogged) {
+      if (!name.trim()) return "Por favor ingresa tu nombre.";
+      if (!email.trim()) return "Por favor ingresa tu correo.";
+      // email básico
+      // NOTE: para validación más sólida usar una librería o regex más completa
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) return "Por favor ingresa un correo válido.";
+    }
     if (!message.trim() || message.trim().length < 10) return "El mensaje debe tener al menos 10 caracteres.";
     return null;
   };
@@ -56,31 +79,31 @@ const Contact = () => {
     setStatus(null);
     const error = validate();
     if (error) {
-      setStatus({ type: "error", message: error });
+      setStatus({ type: 'error', message: error });
       return;
     }
 
     setLoading(true);
     try {
-      const res = await fetch("/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ name: name.trim(), email: email.trim(), message: message.trim() })
+      // Enviamos igual name/email por compatibilidad (el backend puede ignorarlos si usas JWT)
+      await sendContact({
+        name: name.trim(),
+        email: email.trim(),
+        message: message.trim(),
       });
 
-      if (!res.ok) {
-        const payload = await res.json().catch(() => ({}));
-        throw new Error(payload?.error || "Error al enviar el mensaje.");
-      }
+      setStatus({
+        type: 'success',
+        message: 'Mensaje enviado. ¡Gracias!'
+      });
 
-      setStatus({ type: "success", message: "Mensaje enviado. ¡Gracias!" });
-      setName("");
-      setEmail("");
-      setMessage("");
+      if (!isLogged) {
+        setName('');
+        setEmail('');
+      }
+      setMessage('');
     } catch (err) {
-      setStatus({ type: "error", message: err.message || "Error desconocido." });
+      setStatus({ type: 'error', message: err?.message || 'Error desconocido.' });
     } finally {
       setLoading(false);
     }
@@ -91,15 +114,22 @@ const Contact = () => {
       <div className="max-w-6xl mx-auto">
         <header className="mb-8">
           <h1 className="text-4xl font-extrabold">Ayuda y Comentarios</h1>
-          <p className="text-slate-400 mt-2">Encuentra respuestas a las preguntas más comunes o envíanos un
-            mensaje.</p>
+          <p className="text-slate-400 mt-2">
+            Encuentra respuestas a las preguntas más comunes o envíanos un mensaje.
+          </p>
+
+          {/* NUEVO: aviso de sesión arriba, sin tocar estilos del layout */}
+          {isLogged && (
+            <div className="mt-4 text-sm text-slate-300">
+              Sesión iniciada como <span className="font-semibold">{storedUser?.display_name || storedUser?.username}</span> (<span className="text-slate-400">{storedUser?.email}</span>).
+            </div>
+          )}
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left: FAQ */}
           <section>
-            <h2 className="text-2xl font-semibold mb-6">Preguntas Frecuentes
-</h2>
+            <h2 className="text-2xl font-semibold mb-6">Preguntas Frecuentes</h2>
 
             <div className="space-y-4">
               {FAQ_ITEMS.map((item, idx) => {
@@ -139,9 +169,11 @@ const Contact = () => {
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="Carl Sagan"
-                  className="w-full bg-[#0b0f13] border border-[#22252a] rounded-lg px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-700"
+                  disabled={isLogged}
+                  className={`w-full bg-[#0b0f13] border border-[#22252a] rounded-lg px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-700 ${isLogged ? 'opacity-70 cursor-not-allowed' : ''}`}
                   aria-label="Tu nombre"
                 />
+                {isLogged && <small className="text-slate-400">Usaremos tu nombre de cuenta.</small>}
               </label>
 
               <label className="block text-sm text-slate-300">
@@ -151,9 +183,11 @@ const Contact = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="carl@cosmos.com"
-                  className="w-full bg-[#0b0f13] border border-[#22252a] rounded-lg px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-700"
+                  disabled={isLogged}
+                  className={`w-full bg-[#0b0f13] border border-[#22252a] rounded-lg px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-700 ${isLogged ? 'opacity-70 cursor-not-allowed' : ''}`}
                   aria-label="Tu correo"
                 />
+                {isLogged && <small className="text-slate-400">Usaremos el correo asociado a tu cuenta.</small>}
               </label>
 
               <label className="block text-sm text-slate-300">
@@ -161,7 +195,7 @@ const Contact = () => {
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Tell us about the pale blue dot..."
+                  placeholder="Cuéntanos en que podemos ayudarte..."
                   rows={5}
                   className="w-full bg-[#0b0f13] border border-[#22252a] rounded-lg px-4 py-3 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-slate-700 resize-none"
                   aria-label="Tu mensaje"
