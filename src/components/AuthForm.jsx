@@ -53,7 +53,7 @@ const AuthForm = ({ mode = "register" }) => {
             } else {
                 // 4️⃣ Login
                 const credentials = { email, password };
-                const data = await login(credentials);
+                await login(credentials);
 
                 if (data.token && data.user) {
                     loginToStore(data.user, data.token);
