@@ -12,6 +12,18 @@ export const getAllAsters = async () => {
     }
 }
 
+// Metodo GET para ver SOLO PUBLICADAS (con límite: por defecto 3)
+export const getPublishedAsters = async (limit = 3) => {
+  try {
+    // requiere que tu backend tenga la ruta GET /asterium/published y soporte ?limit=
+    const response = await API.get(`/asterium`, { params: { limit } });
+    return response.data;
+  } catch (error) {
+    console.error(`getPublishedAsters error:`, msg(error));
+    throw error;
+  }
+};
+
 //Para ver UNA ASTER (Estrella)
 export const getAsterById = async (id) => {
     try {
