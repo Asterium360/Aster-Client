@@ -37,7 +37,7 @@ export const AsterRouter = createBrowserRouter([{
         {
             path: "/viewpost/:id",
             element: <AsterDetail />,
-            loader: routeValidator,
+            //loader: routeValidator,
         },
         {
             path: "/newpost",
