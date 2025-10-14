@@ -27,6 +27,9 @@ const AuthForm = ({ mode = "register" }) => {
         );
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
+
+            
+
             return;
         }
 

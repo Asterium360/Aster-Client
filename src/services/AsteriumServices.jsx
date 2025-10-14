@@ -38,7 +38,11 @@ export const getAsterById = async (id) => {
 //Metodo POST para el CREATE
 export const createAster = async (newAster) => {
     try {
-        const response = await API.post(`/asterium`, newAster);
+        const config = newAster instanceof FormData 
+            ? {} 
+            : { headers: { 'Content-Type': 'application/json' } };
+        
+        const response = await API.post(`/asterium`, newAster, config);
         return response.data;
     } catch (error) {
         console.error(`createAster error:`, error.message);
@@ -49,7 +53,11 @@ export const createAster = async (newAster) => {
 //Metodo PUT para el UPDATE
 export const updateAster = async (id, updatedAster) => {
     try {
-        const response = await API.put(`/asterium/${id}`, updatedAster);
+        const config = updatedAster instanceof FormData 
+            ? {} 
+            : { headers: { 'Content-Type': 'application/json' } };
+            
+        const response = await API.put(`/asterium/${id}`, updatedAster, config);
         return response.data;
     } catch (error) {
         console.error(`updateAster con ID ${id} error:`, error.message);
