@@ -1,154 +1,152 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getAllAsters } from "../services/AsteriumServices";
+import AsterCard from "../components/Card";
+import Button from "../components/Button"; // Ajusta la ruta según tu proyecto
 
-export default function ExplorePage() {
-  const [asters, setAsters] = useState([]);
-  const [filteredAsters, setFilteredAsters] = useState([]);
+const ExplorePage =() => {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const [search, setSearch] = useState("");
-  const [tag, setTag] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
   const [sort, setSort] = useState("recent");
 
-  // 🔹 Traer todos los datos desde el service
+  const navigate = useNavigate();
+
+  // Debounce simple para la búsqueda (300ms)
+  useEffect(() => {
+    const t = setTimeout(() => setDebouncedSearch(search.trim()), 300);
+    return () => clearTimeout(t);
+  }, [search]);
+
+  // Traer todos los posts
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const data = await getAllAsters();
-        setAsters(data);
-        setFilteredAsters(data);
-      } catch (error) {
-        console.error("Error cargando astros:", error);
+        setPosts(Array.isArray(data) ? data : []);
+      } catch (err) {
+        console.error("Error cargando astros:", err);
+        setError("No se pudieron cargar los posts.");
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
   }, []);
 
-  // 🔹 Filtrar y ordenar cuando cambien los filtros
-  useEffect(() => {
-    let results = [...asters];
+  // Filtrado + orden → ids para renderizar
+  const filteredIds = useMemo(() => {
+    if (!posts || posts.length === 0) return [];
 
-    // 🔎 Búsqueda (en título, resumen, autor y tags)
-    if (search) {
-      const lowerSearch = search.toLowerCase();
-      results = results.filter(
-        aster =>
-          aster.title.toLowerCase().includes(lowerSearch) ||
-          aster.summary.toLowerCase().includes(lowerSearch) ||
-          aster.author.toLowerCase().includes(lowerSearch) ||
-          (aster.tags &&
-            aster.tags.some(tag => tag.toLowerCase().includes(lowerSearch)))
-      );
-    }
+    const q = (debouncedSearch || "").toLowerCase();
 
-    // 🏷️ Filtro por tag (categoría/etiqueta)
-    if (tag) {
-      results = results.filter(
-        aster =>
-          aster.tags &&
-          aster.tags.some(t => t.toLowerCase() === tag.toLowerCase())
-      );
-    }
-
-    // 🕒 Ordenar por fecha
-    results.sort((a, b) => {
-      if (sort === "recent") {
-        return new Date(b.created_at) - new Date(a.created_at);
-      } else {
-        return new Date(a.created_at) - new Date(b.created_at);
+    let results = posts.filter((p) => {
+      if (q) {
+        const inTitle = String(p.title || "").toLowerCase().includes(q);
+        const inExcerpt = String(p.excerpt || "").toLowerCase().includes(q);
+        const inContent = String(p.content_md || "").toLowerCase().includes(q);
+        const inAuthor = String(p.author || "").toLowerCase().includes(q);
+        if (!(inTitle || inExcerpt || inContent || inAuthor)) return false;
       }
+      return true;
     });
 
-    setFilteredAsters(results);
-  }, [search, tag, sort, asters]);
+    results.sort((a, b) => {
+      const dateA = new Date(a.published_at || a.created_at || a.updated_at || 0).getTime();
+      const dateB = new Date(b.published_at || b.created_at || b.updated_at || 0).getTime();
+      return sort === "recent" ? dateB - dateA : dateA - dateB;
+    });
 
-  // 🔹 Obtener lista de tags únicos (para el select de filtros)
-  const allTags = Array.from(
-    new Set(asters.flatMap(aster => aster.tags || []))
-  );
+    return results.map((r) => r.id);
+  }, [posts, debouncedSearch, sort]);
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Explorar Asters</h1>
+    <div style={{ backgroundColor: "#02060D", minHeight: "100vh" }} className="p-6 text-white">
+      <div className="max-w-6xl mx-auto">
+        {/* Header con botón a la derecha */}
+        <header className="mb-6 flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold mb-2">Explorar</h1>
+            <p className="text-gray-300">Busca, filtra y ordena publicaciones.</p>
+          </div>
 
-      {/* Barra de búsqueda y filtros */}
-      <div className="flex gap-4 mb-6 flex-wrap">
-        <input
-          type="text"
-          placeholder="Buscar por título, autor, resumen o tags"
-          value={search}
-          onChange={e => setSearch(e.target.value)}
-          className="border p-2 rounded flex-1 min-w-[200px]"
-        />
+          {/* Botón crear post */}
+          <Button
+            title="+ Crear nuevo post"
+            tooltip="Ir a crear un nuevo post"
+            action={() => navigate("/newpost")}
+          />
+        </header>
 
-        <select
-          value={tag}
-          onChange={e => setTag(e.target.value)}
-          className="border p-2 rounded"
-        >
-          <option value="">Todos los tags</option>
-          {allTags.map((t, idx) => (
-            <option key={idx} value={t}>
-              {t}
-            </option>
-          ))}
-        </select>
+        {/* Controles: búsqueda y orden */}
+        <section className="mb-6">
+          <div className="flex gap-3 flex-wrap">
+            <input
+              type="text"
+              placeholder="Buscar por título, excerpt, contenido o autor..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="flex-1 min-w-[200px] p-2 rounded bg-white/5 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
 
-        <select
-          value={sort}
-          onChange={e => setSort(e.target.value)}
-          className="border p-2 rounded"
-        >
-          <option value="recent">Más recientes</option>
-          <option value="oldest">Más antiguos</option>
-        </select>
-      </div>
-
-      {/* Lista de posts */}
-      <div className="grid gap-6">
-        {filteredAsters.length > 0 ? (
-          filteredAsters.map(aster => (
-            <div
-              key={aster.id}
-              className="border p-4 rounded shadow flex gap-4"
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value)}
+              className="p-2 rounded bg-white/5 text-white"
             >
-              {/* Imagen */}
-              {aster.image_url && (
-                <img
-                  src={aster.image_url}
-                  alt={aster.title}
-                  className="w-40 h-28 object-cover rounded"
+              <option className="bg-[#02060D] text-white" value="recent">Más recientes</option>
+              <option className="bg-[#02060D] text-white" value="oldest">Más antiguos</option>
+            </select>
+
+            <button
+              onClick={() => {
+                setSearch("");
+                setSort("recent");
+              }}
+              className="px-3 py-2 rounded bg-white/6 text-white hover:bg-white/10"
+            >
+              Limpiar
+            </button>
+          </div>
+
+          <div className="mt-3 text-sm text-gray-300">
+            {loading ? (
+              "Cargando publicaciones..."
+            ) : error ? (
+              <span className="text-red-400">{error}</span>
+            ) : (
+              <span>{filteredIds.length} resultados</span>
+            )}
+          </div>
+        </section>
+
+        {/* Grid de cards */}
+        <main>
+          {loading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="h-56 rounded-xl bg-white/5 backdrop-blur-md border border-white/10 animate-pulse"
                 />
-              )}
-
-              {/* Contenido */}
-              <div>
-                <h3 className="text-lg font-semibold">{aster.title}</h3>
-                <p className="text-sm text-gray-600">{aster.summary}</p>
-                <p className="text-sm">
-                  <span className="font-medium">Autor:</span> {aster.author}
-                </p>
-                <p className="text-sm text-gray-500">
-                  {new Date(aster.created_at).toLocaleDateString()}
-                </p>
-
-                {/* Tags */}
-                <div className="flex gap-2 mt-2 flex-wrap">
-                  {aster.tags &&
-                    aster.tags.map((t, idx) => (
-                      <span
-                        key={idx}
-                        className="bg-gray-200 text-xs px-2 py-1 rounded"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                </div>
-              </div>
+              ))}
             </div>
-          ))
-        ) : (
-          <p>No se encontraron resultados.</p>
-        )}
+          ) : filteredIds.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredIds.map((id) => (
+                <AsterCard key={id} id={id} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-gray-300">No se encontraron resultados.</p>
+          )}
+        </main>
       </div>
     </div>
   );
 }
+export default ExplorePage;

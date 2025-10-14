@@ -9,6 +9,7 @@ import AsterDetail from "../pages/AsterDetail";
 import AuthForm from "../components/AuthForm";
 import AsterForm from "../components/AsterForm";
 import { routeValidator } from "../validators/routeValidator";
+import AdminDashboard from "../pages/AdminDashboard";
 
 
 export const AsterRouter = createBrowserRouter([{
@@ -47,12 +48,18 @@ export const AsterRouter = createBrowserRouter([{
         {
             path: "/editpost/:id",
             element: <AsterForm />,
-            loader: routeValidator,
+            //loader: routeValidator,
         },
         {
             path: "/contact",
             element: <Contact />,
-            loader: routeValidator,
+            //loader: routeValidator,
+        },
+        /*Ruta de Admin*/
+        {
+            path: "/admin",
+            element: <AdminDashboard />,
+            //loader: routeValidator,
         },
         /*Rutas para login/register usando el componente de authform */
         {

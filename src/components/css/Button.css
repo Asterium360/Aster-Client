@@ -1,9 +1,8 @@
-
 button {
     position: relative;
     padding: 10px 20px;
     border-radius: 50px;
-    border: 1px solid #02060D;
+    border: 1px solid #eef5ff;
     font-size: 14px;
     text-transform: uppercase;
     font-weight: 600;
@@ -18,13 +17,11 @@ button {
 }
 
 button:hover {
-    background: #4f2859;
-    border: #02060D;
-    box-shadow: 0 0 30px 5px #5f5d7b;
+    box-shadow: 0 0 20px 3px #5f5d7b;
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 button:hover::before {

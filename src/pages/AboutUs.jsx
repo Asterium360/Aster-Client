@@ -1,6 +1,5 @@
 import React from "react";
 
-// Компонент одного участника команды
 const TeamMember = ({ name, role, imgSrc, githubLink = "#", linkedinLink = "#" }) => (
   <div className="group text-center transform transition-transform duration-300 hover:scale-105">
     <div className="relative mx-auto h-40 w-40 sm:h-48 sm:w-48 md:h-40 md:w-40">
@@ -30,7 +29,7 @@ const TeamMember = ({ name, role, imgSrc, githubLink = "#", linkedinLink = "#" }
 
 function AboutUs() {
   return (
-    <div className="min-h-screen bg-background text-text-primary font-sans">
+    <div className="min-h-screen bg-background text-text-primary">
       <main className="flex-grow">
         <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-4xl">
@@ -63,7 +62,7 @@ function AboutUs() {
                   <div className="absolute inset-0 bg-black/30 rounded-lg"></div>
                   <div className="absolute inset-0 flex items-center justify-center">
                     <img
-                      src="src/assets/img/aboutus_space.png"
+                      src="src/assets/img/AsterLogo.png"
                       alt="space"
                       className="h-full w-full object-cover rounded-lg"
                     />
