@@ -3,6 +3,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getAsterById, deleteAster } from "../services/AsteriumServices";
 import useAuthStore from "../store/authStore";
 import Button from "../components/Button";
+import { notification, Modal } from "antd"; 
+import "../index.css"
+
+const { confirm } = Modal;
 
 const AsterDetail = () => {
   const { id } = useParams();
@@ -35,23 +39,51 @@ const AsterDetail = () => {
     fetchData();
   }, [id]);
 
-  const handleDelete = async () => {
-    if (!confirm("¿Seguro que quieres eliminar este post?")) return;
-    try {
-      await deleteAster(id);
-      alert("✅ Post eliminado correctamente");
-      navigate("/explore");
-    } catch (err) {
-      console.error(err);
-      alert("❌ Error al eliminar el post");
-    }
+  const openNotification = (type, message, description) => {
+    notification[type]({
+      message,
+      description,
+      placement: "top",
+      className: "dark-notification",
+      style: {
+        backgroundColor: "#1f1f1f", // fondo oscuro
+        borderRadius: "6px",
+      },
+      duration: 4,
+    });
+  };
+
+  const handleDelete = () => {
+    confirm({
+      title: "¿Seguro que quieres eliminar este post?",
+      content: "Esta acción no se puede deshacer",
+      okText: "Sí, eliminar",
+      okType: "danger",
+      cancelText: "Cancelar",
+      centered: true,
+      maskClosable: true,
+      modalRender: (modal) => (
+      <div style={{ backgroundColor: "#1f1f1f", borderRadius: "8px", color: "#fff", padding: "16px" }}>
+        {modal}
+      </div>
+    ),
+      onOk: async () => {
+        try {
+          await deleteAster(id);
+          openNotification("success", "Post eliminado", "El post fue eliminado correctamente");
+          navigate("/explore");
+        } catch (err) {
+          console.error(err);
+          openNotification("error", "Error", "❌ Error al eliminar el post");
+        }
+      },
+    });
   };
 
   if (loading) return <div className="text-center text-white mt-10">Cargando...</div>;
   if (error) return <div className="text-center text-red-500 mt-10">Error: {error.message}</div>;
   if (!asterium) return <div className="text-center text-white mt-10">El post no existe</div>;
 
-  // 👇 Aquí va la condición correcta
   const canEditOrDelete =
     user &&
     (user.role === "admin" ||
@@ -82,27 +114,16 @@ const AsterDetail = () => {
         </div>
       )}
 
-      {/* 👇 Botones CRUD solo para dueño o admin */}
       <div className="flex justify-end mt-6 gap-3">
-  {canEditOrDelete && (
-    <>
-      <Button
-        title="Editar"
-        action={() => navigate(`/editpost/${id}`)}
-      />
-      <Button
-        title="Eliminar"
-        action={handleDelete}
-      />
-    </>
-  )}
+        {canEditOrDelete && (
+          <>
+            <Button title="Editar" action={() => navigate(`/editpost/${id}`)} />
+            <Button title="Eliminar" action={handleDelete} />
+          </>
+        )}
 
-  {/* Cancelar siempre visible */}
-  <Button
-    title="Cancelar"
-    action={() => navigate("/explore")}
-  />
-</div>
+        <Button title="Cancelar" action={() => navigate("/explore")} />
+      </div>
     </div>
   );
 };

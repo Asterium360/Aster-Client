@@ -15,6 +15,11 @@ body {
     color: #ffffff;
 }
 
+.dark-notification .ant-notification-notice-message,
+.dark-notification .ant-notification-notice-description {
+  color: #ffffff !important;
+}
+
 
 
 
