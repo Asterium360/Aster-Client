@@ -9,10 +9,10 @@
     "preview": "vite preview",
     "test": "vitest",
     "api-fake": "json-server --watch server/Asterium.json --port 5000",
-    "vitest": "vitest",                  
+    "vitest": "vitest",
     "vitest:watch": "vitest --watch",
-    "coverage": "jest --coverage",       
-    "lint": "eslint . --ext .js,.jsx"    
+    "coverage": "jest --coverage",
+    "lint": "eslint . --ext .js,.jsx"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -22,6 +22,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.2",
+    "three": "^0.180.0",
     "zustand": "^5.0.8"
   },
   "devDependencies": {

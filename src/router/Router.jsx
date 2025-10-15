@@ -10,6 +10,7 @@ import AuthForm from "../components/AuthForm";
 import AsterForm from "../components/AsterForm";
 import { routeValidator } from "../validators/routeValidator";
 import AdminDashboard from "../pages/AdminDashboard";
+import MeteorDodger from "../pages/games/MeteorDodger";
 
 
 export const AsterRouter = createBrowserRouter([{
@@ -69,6 +70,10 @@ export const AsterRouter = createBrowserRouter([{
         {
             path: "/register",
             element: <AuthForm mode="register"/>
+        },
+        {
+            path: "/games/meteor-dodger",
+            element: <MeteorDodger />
         }
     ]
 }])
