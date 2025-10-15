@@ -34,15 +34,7 @@ El diseño sigue un estilo minimalista con enfoque en la lectura y la experienci
 
 Vistas: about us, post page, feedback page, register page, login page, create a new post page, profile page, search result page.
 
-![](./src/assets/img_README/home%20page.png)
-![](./src/assets/img_README/register.png)
-![](./src/assets/img_README/login.png)
-![](./src/assets/img_README/aboutus.png)
-![](./src/assets/img_README/profile%20page.png)
-![](./src/assets/img_README/create%20a%20new%20post%20page.png)
-![](./src/assets/img_README/one%20post%20page.png)
-![](./src/assets/img_README/feedback%20page.png)
-![](./src/assets/img_README/search%20page.png)
+Enlace: https://www.figma.com/design/kofeymVilSP9jyQ7k8P2Wx/Asterium?node-id=17-2&t=BqSRzoE0jWOoDuy3-1
 
 ## **⚙️ Tecnologías**
 
@@ -53,13 +45,6 @@ Vistas: about us, post page, feedback page, register page, login page, create a 
 * 🧭 **React Router**  
 * 🔤 **Renderizado Markdown**  
 * 🔧 **Axios** para solicitudes API
-
-### **⚙️ Backend**
-
-* 🧩 **Node.js \+ Express \+ TypeScript**  
-* 🔐 **JWT** para autenticación  
-* 🧰 **Joi** para validación  
-* 🧪 **Jest** para pruebas
 
 ## **📁 Estructura del Proyecto**
 
@@ -74,18 +59,6 @@ Vistas: about us, post page, feedback page, register page, login page, create a 
   `│   ├── validators/       # validaciones de formularios`  
   `│   └── main.tsx`
 
-`/server`  
-  `├── src/`  
-  `│   ├── config/           # configuración del entorno`  
-  `│   ├── controllers/      # lógica de los endpoints`  
-  `│   ├── models/           # modelos de Mongoose (User, Post, Comment)`  
-  `│   ├── routes/           # rutas de Express`  
-  `│   ├── middlewares/      # autenticación y validación`  
-  `│   ├── tests/            # pruebas Jest`  
-  `│   ├── db.ts             # conexión a MongoDB`  
-  `│   └── app.ts            # inicialización del servidor`
-
----
 
 ## **⚡ Instalación y Ejecución**
 
@@ -134,3 +107,6 @@ Se prueban:
 * 💻 Página web:  
 * ✉️ Correo electrónico: equipoasterium@gmail.com
 
+
+**Proyecto realizado en Factoría F5 – Bootcamp FullStack & DevOps.
+Diseñado con buenas prácticas de arquitectura, seguridad y documentación profesional.**
