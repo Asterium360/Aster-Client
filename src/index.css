@@ -20,6 +20,14 @@ body {
   color: #ffffff !important;
 }
 
+@keyframes like-beat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+}
+
+.animate-like {
+  animation: like-beat 0.5s ease;
+}
 
 
 

@@ -21,7 +21,7 @@ button:hover {
     -webkit-transition: all 0.2s ease-out;
     -moz-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
-    font-size: 0.9rem;
+    font-size: 1.06rem;
 }
 
 button:hover::before {
@@ -40,7 +40,7 @@ button::before {
     left: 0%;
     opacity: 0;
     background: #fff;
-    box-shadow: 0 0 50px 30px #fff;
+    box-shadow: 0 0 50px 10px #ffffff94;
     -webkit-transform: skewX(-20deg);
     -moz-transform: skewX(-20deg);
     -ms-transform: skewX(-20deg);
