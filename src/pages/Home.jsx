@@ -28,9 +28,9 @@ function Card({ post }) {
           <time className="text-xs text-[#5f5d7b] font-medium">
             {formatFecha(post.published_at)}
           </time>
-          <span className="inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold bg-[#4f2859] text-[#d2b84d]">
+          {/* <span className="inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold bg-[#4f2859] text-[#d2b84d]">
             Cosmology
-          </span>
+          </span> */}
         </div>
 
         
