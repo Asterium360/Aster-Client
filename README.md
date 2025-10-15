@@ -46,7 +46,7 @@ Enlace: https://www.figma.com/design/kofeymVilSP9jyQ7k8P2Wx/Asterium?node-id=17-
 * 🔤 **Renderizado Markdown**  
 * 🔧 **Axios** para solicitudes API
 
-## **📁 Estructura del Proyecto**
+## **📁 Estructura del Proyecto (frontend)**
 
 `/client`  
   `├── src/`  
@@ -63,12 +63,11 @@ Enlace: https://www.figma.com/design/kofeymVilSP9jyQ7k8P2Wx/Asterium?node-id=17-
 ## **⚡ Instalación y Ejecución**
 
 `# 1. Clonar el repositorio`  
-`git clone https://github.com/yourusername/asterium.git`  
-`cd asterium`
+`git clone https://github.com/Asterium360/Aster-Client.git`  
+`cd client`
 
-`# 2. Instalar dependencias`  
+`# 2. Instalar dependencia`  
 `cd client && npm install`  
-`cd ../server && npm install`
 
 `# 3. Configurar variables de entorno`  
 `cp .env.example .env`  
@@ -78,7 +77,6 @@ Enlace: https://www.figma.com/design/kofeymVilSP9jyQ7k8P2Wx/Asterium?node-id=17-
 `npm run dev  # ejecuta frontend y backend en modo desarrollo`
 
 🛰️ Frontend → [http://localhost:5173](http://localhost:5173)  
- 🌌 Backend → [http://localhost:5000](http://localhost:5000)
 
 ## **🧪 Pruebas**
 
