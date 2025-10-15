@@ -27,6 +27,9 @@ const AuthForm = ({ mode = "register" }) => {
         );
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors);
+
+            
+
             return;
         }
 
@@ -53,7 +56,7 @@ const AuthForm = ({ mode = "register" }) => {
             } else {
                 // 4️⃣ Login
                 const credentials = { email, password };
-                await login(credentials);
+                const data = await login(credentials);
 
                 if (data.token && data.user) {
                     loginToStore(data.user, data.token);

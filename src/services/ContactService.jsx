@@ -1,33 +1,4 @@
-// // src/services/contactService.js
-// import axios from 'axios';
 
-// const BASE = (import.meta.env.VITE_API_URL || 'http://localhost:4000').replace(/\/+$/, '');
-
-// const api = axios.create({
-//   baseURL: BASE,
-//   headers: { 'Content-Type': 'application/json' },
-//   timeout: 10000,
-// });
-
-// export async function sendContact(payload) {
-//   try {
-//     const { data } = await api.post('/contact', payload); 
-//     return data; 
-//   } catch (error) {
-//     const res = error?.response;
-//     if (res?.status === 422 && res?.data?.errors?.fieldErrors) {
-//       const fe = res.data.errors.fieldErrors;
-//       const msg = Object.entries(fe)
-//         .map(([k, v]) => `${k}: ${v?.join(', ')}`)
-//         .join('\n');
-//       throw new Error(msg || 'Campos inválidos');
-//     }
-//     throw new Error(res?.data?.error || error.message || 'Error al enviar el mensaje');
-//   }
-// }
-
-
-// src/services/ContactService.js
 import axios from 'axios';
 
 const BASE = (import.meta.env.VITE_API_URL || 'http://localhost:4000').replace(/\/+$/, '');
