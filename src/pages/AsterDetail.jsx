@@ -12,6 +12,12 @@ const AsterDetail = () => {
   const [asterium, setAsterium] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     const fetchData = async () => {
