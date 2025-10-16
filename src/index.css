@@ -11,6 +11,7 @@ body {
   font-optical-sizing: auto;
   font-weight: weight;
   font-style: normal;
+  overflow-x: hidden;
   background-color: #02060D;
     color: #ffffff;
 }
@@ -27,6 +28,28 @@ body {
 
 .animate-like {
   animation: like-beat 0.5s ease;
+}
+/* ===== FIX: evitar scroll horizontal global ===== */
+html, body, #root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;   /* clave */
+  
+}
+
+/* Evita que elementos calculen ancho inesperado */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Medios que suelen desbordar en móvil */
+img, canvas, video, iframe, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Corta cualquier píxel rebelde en contenedores semánticos */
+main, header, footer, section, nav {
+  overflow-x: clip;    /* no muestra barra horizontal */
 }
 
 

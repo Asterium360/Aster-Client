@@ -19,7 +19,7 @@ export default function AsterProfile({ headerImageUrl }) {
     const ac = new AbortController();
     setLoading(true);
 
-    API.get(`/users/${userId}/profile`, {
+    API.get(`/user/${userId}/profile`, {
       params: { includePosts: true, page },
       signal: ac.signal,
     })
@@ -61,7 +61,7 @@ export default function AsterProfile({ headerImageUrl }) {
           <div className="relative">
             <div className="w-28 h-28 rounded-full overflow-hidden ring-2 ring-indigo-700 shadow-lg bg-slate-900">
               <img
-                src={headerImageUrl ?? `http://localhost:4000/users/${userId}/avatar`}
+                src={headerImageUrl ?? `http://localhost:4000/user/${userId}/avatar`}
                 alt="avatar"
                 onError={(e) => { e.currentTarget.style.display = "none"; }}
                 className="w-full h-full object-cover"
