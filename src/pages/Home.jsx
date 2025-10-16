@@ -86,7 +86,7 @@ function Home() {
           <h1 className="mx-auto max-w-4xl text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
             Explora el universo
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base md:text-lg text-[#ede6c7]/90 leading-relaxed">
+          <p className="mx-auto mt-6 max-w-2xl text-base md:text-lg text-[#fffff]/90 font-bold leading-relaxed">
             Sumérgete en las maravillas del espacio con nuestros últimos descubrimientos, imágenes impresionantes y conocimientos cósmicos.
           </p>
           <div className="mt-10 flex items-center justify-center gap-4">

@@ -31,7 +31,7 @@ const GalaxyBackground = ({ children }) => {
 
         // Crear galaxia de estrellas
         const starGeometry = new THREE.BufferGeometry();
-        const starCount = 7000;
+        const starCount = 9500;
         const positions = new Float32Array(starCount * 3);
         const colors = new Float32Array(starCount * 3);
         const sizes = new Float32Array(starCount);
@@ -119,7 +119,7 @@ const GalaxyBackground = ({ children }) => {
 
         // Material de las estrellas con aura
         const starMaterial = new THREE.PointsMaterial({
-            size: 0.4,
+            size: 0.1,
             map: starTexture,
             vertexColors: true,
             transparent: true,
@@ -211,7 +211,7 @@ const GalaxyBackground = ({ children }) => {
                 const i3 = i * 3;
 
                 // Mover en el eje Z (hacia la cámara)
-                starPositionsArray[i3 + 2] += 0.02;
+                starPositionsArray[i3 + 2] += 0.01;
 
                 // Si la estrella pasa la cámara, reiniciarla atrás
                 if (starPositionsArray[i3 + 2] > 5) {
