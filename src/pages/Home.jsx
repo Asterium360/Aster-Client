@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getPublishedAsters } from "../services/AsteriumServices";
+import GalaxyBackground from "../components/GalaxyBackground";
+
 
 const formatFecha = (iso) => {
   if (!iso) return "—";
@@ -28,9 +30,9 @@ function Card({ post }) {
           <time className="text-xs text-[#5f5d7b] font-medium">
             {formatFecha(post.published_at)}
           </time>
-          <span className="inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold bg-[#4f2859] text-[#d2b84d]">
+          {/* <span className="inline-flex items-center rounded-md px-2.5 py-1 text-xs font-semibold bg-[#4f2859] text-[#d2b84d]">
             Cosmology
-          </span>
+          </span> */}
         </div>
 
         
@@ -67,22 +69,24 @@ function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen w-full bg-[#02060D]">
+    
+    <main className="min-h-screen w-full">
+      <GalaxyBackground>
       {/* HERO */}
-      <section
+      {/* <section
         className="relative w-full"
         style={{
           backgroundImage:
             "linear-gradient(rgba(2,6,13,0.55), rgba(2,6,13,0.85)), url('/fondohome.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-        }}
-      >
+        }} 
+      >*/}
         <div className="mx-auto max-w-6xl px-6 py-32 md:py-40 text-center">
           <h1 className="mx-auto max-w-4xl text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
             Explora el universo
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base md:text-lg text-[#ede6c7]/90 leading-relaxed">
+          <p className="mx-auto mt-6 max-w-2xl text-base md:text-lg text-[#fffff]/90 font-bold leading-relaxed">
             Sumérgete en las maravillas del espacio con nuestros últimos descubrimientos, imágenes impresionantes y conocimientos cósmicos.
           </p>
           <div className="mt-10 flex items-center justify-center gap-4">
@@ -100,7 +104,7 @@ function Home() {
             </a>
           </div>
         </div>
-      </section>
+      {/*</section>*/}
 
       {/* PUBLICACIONES RECIENTES */}
       <section id="recientes" className="mx-auto max-w-6xl px-6 pb-24 pt-16">
@@ -127,7 +131,9 @@ function Home() {
           </div>
         )}
       </section>
+      </GalaxyBackground>
     </main>
+  
   );
 }
 

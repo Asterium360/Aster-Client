@@ -6,8 +6,10 @@ const Footer = () => {
       <div className="max-w-4xl mx-auto text-center">
 
         <div className="text-xs text-[#d2b84d]">
-          © {new Date().getFullYear()} • Creado con ❤️ para Bootcamp Femcoders Madrid. <br></br>
-          Todos los contenidos tienen fines educativos y de divulgación.
+          {new Date().getFullYear()} • Creado con ❤️ para Bootcamp Femcoders Madrid de <a href="https://factoriaf5.org" target="_blank" rel="noopener noreferrer">
+          {' '} Factoría F5          
+          </a> . <br></br>
+          © Todos los contenidos tienen fines educativos y de divulgación.
         </div>
       </div>
     </footer>
