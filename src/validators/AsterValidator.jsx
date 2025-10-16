@@ -15,12 +15,19 @@ const validateAsterForm = (data) => {
         errors.content_md = "❗ El contenido no puede superar los 5000 caracteres.";
     }
 
-    // 🔸 Validar imagen URL (opcional)
-    if (
-        data.image_url &&
-        !/^https?:\/\/.*\.(jpg|jpeg|png)$/i.test(data.image_url)
-    ) {
-        errors.image_url = "❗ La URL de la imagen no es válida. Solo jpg o png.";
+    // 🔸 Validar imagen (URL, base64 o archivo subido)
+    if (typeof data.image_url === "string" && data.image_url.trim() !== "" && data.image_url !== "file") {
+        const trimmed = data.image_url.trim();
+
+        // URLs HTTP/HTTPS con o sin query strings
+        const urlRegex = /^https?:\/\/.+\.(jpg|jpeg|png|webp)(\?.*)?$/i;
+
+        // Base64 (png/jpg/jpeg/webp)
+        const base64Regex = /^data:image\/(png|jpg|jpeg|webp);base64,[A-Za-z0-9+/=]+$/i;
+
+        if (!urlRegex.test(trimmed) && !base64Regex.test(trimmed)) {
+            errors.image_url = "❗ La imagen debe ser una URL válida, base64 (.jpg/.jpeg/.png/.webp) o un archivo subido.";
+        }
     }
 
     // 🔸 Validar estado

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAllAsters } from "../services/AsteriumServices";
 import AsterCard from "../components/Card";
-import Button from "../components/Button"; // Ajusta la ruta según tu proyecto
+import Button from "../components/Button"; 
 
 const ExplorePage =() => {
   const [posts, setPosts] = useState([]);
@@ -17,7 +17,7 @@ const ExplorePage =() => {
 
   // Debounce simple para la búsqueda (300ms)
   useEffect(() => {
-    const t = setTimeout(() => setDebouncedSearch(search.trim()), 300);
+    const t = setTimeout(() => setDebouncedSearch(search.trim()), 9000);
     return () => clearTimeout(t);
   }, [search]);
 
