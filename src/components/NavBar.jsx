@@ -23,6 +23,7 @@ const NavBar = ({ logo = Logo }) => {
     { label: "Explore", to: "/explore" },
     { label: "About", to: "/about" },
     { label: "Contact", to: "/contact" },
+     { label: "Jugar", to: "/games/meteor-dodger" },
   ];
 
   const adminLinks = [
