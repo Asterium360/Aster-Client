@@ -1061,7 +1061,7 @@ export default function MeteorDodger() {
         </div>
 
         {/* Derecha */}
-        <div className="flex flex-col items-end gap-2">
+        <div className="flex flex-col items-end gap-2 mt-8 sm:mt-10">
           
           <div className="flex gap-2">
             <button onClick={onPause} className="px-3 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-sm">
