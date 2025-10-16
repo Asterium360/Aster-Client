@@ -2,8 +2,8 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#02060D] py-6 px-4 mt-auto border-t border-white/10 backdrop-blur-md">
-      <div className="max-w-4xl mx-auto text-center">
+    <footer className="w-full bg-[#02060D] py-6 px-4 mt-auto border-t border-white/10 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto text-center">
 
         <div className="text-xs text-[#d2b84d]">
           {new Date().getFullYear()} • Creado con ❤️ para Bootcamp Femcoders Madrid de <a href="https://factoriaf5.org" target="_blank" rel="noopener noreferrer">

@@ -31,7 +31,7 @@ const GalaxyBackground = ({ children }) => {
 
         // Crear galaxia de estrellas
         const starGeometry = new THREE.BufferGeometry();
-        const starCount = 9500;
+        const starCount = 1000;
         const positions = new Float32Array(starCount * 3);
         const colors = new Float32Array(starCount * 3);
         const sizes = new Float32Array(starCount);
