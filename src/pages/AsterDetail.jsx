@@ -116,7 +116,7 @@ const AsterDetail = () => {
     setLikes((prev) => prev + 1);
     setHasLiked(true);
     setAnimate(true); // activar animación
-    setTimeout(() => setAnimate(false), 500); // reiniciar animación
+    setTimeout(() => setAnimate(false), 400); // reiniciar animación
     openNotification("success", "❤️ Gracias", "Tu like ha sido registrado");
   };
 
@@ -178,7 +178,7 @@ const AsterDetail = () => {
             <Button title="Eliminar" action={handleDelete} />
           </>
         )}
-        <Button title="Cancelar" action={() => navigate("/explore")} />
+        <Button title="Volver" action={() => navigate("/explore")} />
       </div>
     </div>
   );

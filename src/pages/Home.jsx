@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getPublishedAsters } from "../services/AsteriumServices";
+import GalaxyBackground from "../components/GalaxyBackground";
+
 
 const formatFecha = (iso) => {
   if (!iso) return "—";
@@ -67,17 +69,19 @@ function Home() {
   }, []);
 
   return (
-    <main className="min-h-screen w-full bg-[#02060D]">
+    
+    <main className="min-h-screen w-full">
+      <GalaxyBackground>
       {/* HERO */}
-      <section
+      {/* <section
         className="relative w-full"
         style={{
           backgroundImage:
             "linear-gradient(rgba(2,6,13,0.55), rgba(2,6,13,0.85)), url('/fondohome.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
-        }}
-      >
+        }} 
+      >*/}
         <div className="mx-auto max-w-6xl px-6 py-32 md:py-40 text-center">
           <h1 className="mx-auto max-w-4xl text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-tight">
             Explora el universo
@@ -100,7 +104,7 @@ function Home() {
             </a>
           </div>
         </div>
-      </section>
+      {/*</section>*/}
 
       {/* PUBLICACIONES RECIENTES */}
       <section id="recientes" className="mx-auto max-w-6xl px-6 pb-24 pt-16">
@@ -127,7 +131,9 @@ function Home() {
           </div>
         )}
       </section>
+      </GalaxyBackground>
     </main>
+  
   );
 }
 
