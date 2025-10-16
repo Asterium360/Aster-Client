@@ -81,21 +81,21 @@ function AboutUs() {
               <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 <TeamMember
                   name="Michelle Gelves"
-                  role="Team Lead / Frontend"
+                  role="Frontend Developer"
                   imgSrc="src/assets/img/Michelle.png"
                   githubLink="https://github.com/MichelleGel"
                   linkedinLink="https://www.linkedin.com/in/michelle-gelves/"
                 />
                 <TeamMember
                   name="Larysa Ambartsumian"
-                  role="Scrum Master / Frontend"
+                  role="Scrum Master / Frontend Developer"
                   imgSrc="src/assets/img/Larysa.png"
                   githubLink="https://github.com/ambalari"
                   linkedinLink="https://www.linkedin.com/in/larysa-ambartsumian/"
                 />
                 <TeamMember
                   name="Angelica Pereira"
-                  role="Desarrolladora Fullstack"
+                  role="Team Lead / Fullstack Developer"
                   imgSrc="src/assets/img/Anngy.png"
                   githubLink="https://github.com/angiepereir"
                   linkedinLink="https://www.linkedin.com/in/anngy-pereira-094aa026a/"
@@ -106,14 +106,14 @@ function AboutUs() {
               <div className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-12 sm:gap-32">
                 <TeamMember
                   name="Maryori Cruz"
-                  role="Desarrolladora Backend"
+                  role="Backend Developer"
                   imgSrc="src/assets/img/Maryori.png"
                   githubLink="https://github.com/MaryoriCruz"
                   linkedinLink="https://www.linkedin.com/in/maryori-cruz-6b440116b/"
                 />
                 <TeamMember
                   name="Sofia Reyes"
-                  role="Desarrolladora Backend"
+                  role="Backend Developer"
                   imgSrc="src/assets/img/Sofia.png"
                   githubLink="https://github.com/Sofiareyes12"
                   linkedinLink="https://www.linkedin.com/in/sofiareyes12/"
