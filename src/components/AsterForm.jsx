@@ -4,6 +4,8 @@ import { createAster, getAsterById, updateAster } from "../services/AsteriumServ
 import Button from "./Button";
 import validateAsterForm from "../validators/AsterValidator";
 import useAuthStore from "../store/authStore";
+import { notification } from "antd";
+import "../index.css";
 
 const AsterForm = () => {
     const { id } = useParams();
@@ -18,7 +20,7 @@ const AsterForm = () => {
         status: "draft",
     });
 
-    const [imageMode, setImageMode] = useState("url"); // "url" o "file"
+    const [imageMode, setImageMode] = useState("url");
     const [imageFile, setImageFile] = useState(null);
     const [imagePreview, setImagePreview] = useState("");
     const [loading, setLoading] = useState(isEdit);
@@ -70,7 +72,6 @@ const AsterForm = () => {
         reader.onloadend = () => setImagePreview(reader.result);
         reader.readAsDataURL(file);
 
-        // Limpiar URL del form
         setForm((prev) => ({ ...prev, image_url: "" }));
     };
 
@@ -81,14 +82,28 @@ const AsterForm = () => {
         if (mode === "file") setForm((prev) => ({ ...prev, image_url: "" }));
     };
 
+    // Función para mostrar notificaciones
+    const openNotification = (type, message, description) => {
+        notification[type]({
+            message,
+            description,
+            placement: "top",
+            className: "dark-notification",
+            style: {
+                backgroundColor: "#1f1f1f", // fondo oscuro
+                borderRadius: "6px",
+            },
+            duration: 4,
+        });
+    };
+
     const handleSubmit = (publishStatus) => async () => {
         if (!user) {
-            alert("❌ Debes iniciar sesión para crear un post");
+            openNotification("error", "No autenticado", "Debes iniciar sesión para crear un post");
             navigate("/login");
             return;
         }
 
-        // Construir payload según modo de imagen
         const payload =
             imageMode === "file" && imageFile
                 ? (() => {
@@ -108,12 +123,11 @@ const AsterForm = () => {
                     ...(imageMode === "url" ? { image_url: form.image_url || "" } : {}),
                 };
 
-        // Validación
         const validationErrors = validateAsterForm({
             ...form,
             status: publishStatus,
             author_id: user.id,
-            image_url: imageMode === "file" ? "" : form.image,
+            image_url: imageMode === "file" ? "" : form.image_url,
         });
 
         if (Object.keys(validationErrors).length > 0) {
@@ -126,19 +140,18 @@ const AsterForm = () => {
             let savedPost;
             if (isEdit) {
                 savedPost = await updateAster(id, payload);
-                alert("✅ Post actualizado correctamente");
+                openNotification("success", "Post actualizado", "Post actualizado correctamente");
             } else {
                 savedPost = await createAster(payload);
-                alert("✅ Post creado correctamente");
+                openNotification("success", "Post creado", "Post creado correctamente");
             }
 
-            // Actualizar preview con URL real desde backend
             if (savedPost.image_url) setImagePreview(savedPost.image_url);
 
             navigate("/explore", { state: { refresh: true } });
         } catch (err) {
             console.error(err);
-            alert("❌ Error al guardar el post");
+            openNotification("error", "Error", "❌ Error al guardar el post");
         }
     };
 
