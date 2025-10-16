@@ -4,6 +4,7 @@ import './index.css'
 import { RouterProvider } from 'react-router-dom'
 import AsterRouter from './router/Router'
 import useAuthStore from './store/authStore'
+import "antd/dist/reset.css";
 
 useAuthStore.getState().initialize();
 
