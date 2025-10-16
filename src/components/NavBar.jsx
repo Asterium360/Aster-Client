@@ -38,7 +38,7 @@ const NavBar = ({ logo = Logo }) => {
   const visibleActions = actions.filter(btn => location.pathname !== btn.to);
 
   return (
-    <nav style={{ backgroundColor: "#02060D" }} className="text-white px-4 py-4 backdrop-blur-md border-b border-white/10">
+    <nav style={{ backgroundColor: "#02060D" }} className="w-full fixed top-0 left-0 z-50 text-white px-4 py-4 backdrop-blur-md border-b border-white/10">
       <div className="flex items-center justify-between">
         {/* Logo izquierda */}
         <div className="flex items-center gap-2">

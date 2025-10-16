@@ -9,10 +9,11 @@
 body {
   font-family: "Oxanium", sans-serif;
   font-optical-sizing: auto;
-  font-weight: weight;
+  overflow-x: hidden;
   font-style: normal;
   background-color: #02060D;
     color: #ffffff;
+
 }
 
 .dark-notification .ant-notification-notice-message,
