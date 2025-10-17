@@ -287,7 +287,7 @@ const GalaxyBackground = ({ children }) => {
     }, []);
 
     return (
-        <div className="relative w-full min-h-screen">
+        <div className="w-full">
             {/* Canvas de Three.js */}
             <div
                 ref={mountRef}

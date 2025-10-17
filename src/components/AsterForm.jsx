@@ -96,7 +96,6 @@ const AsterForm = () => {
             duration: 4,
         });
     };
-        
     const handleSubmit = (publishStatus) => async () => {
         if (!user) {
             openNotification("error", "No autenticado", "Debes iniciar sesión para crear un post");
