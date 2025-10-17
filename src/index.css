@@ -1,4 +1,3 @@
-
 @import "tailwindcss";
 
 @tailwind base;
@@ -12,9 +11,23 @@ body {
   overflow-x: hidden;
   font-style: normal;
   background-color: #02060D;
-    color: #ffffff;
+  color: #ffffff;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 
 }
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
 
 .dark-notification .ant-notification-notice-message,
 .dark-notification .ant-notification-notice-description {
@@ -22,14 +35,17 @@ body {
 }
 
 @keyframes like-beat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.4); }
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.4);
+  }
 }
 
 .animate-like {
   animation: like-beat 0.5s ease;
 }
-
-
-
-

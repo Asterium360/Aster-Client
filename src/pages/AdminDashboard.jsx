@@ -49,7 +49,7 @@ const AdminDashboard = () => {
         <div className="p-6">
             <h1 className="text-3xl font-bold mb-6">Dashboard - Gestión de Usuarios</h1>
 
-            <div className="overflow-x-auto">
+            <div className="overflow-x">
                 <table className="w-full border border-gray rounded-lg">
                     <thead >
                         <tr>
