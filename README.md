@@ -37,8 +37,6 @@ Vistas: about us, post page, feedback page, register page, login page, create a 
 
 ## **⚙️ Tecnologías**
 
-### **🖥️ Frontend**
-
 * ⚛️ **React \+ Vite**  
 * 🎨 **TailwindCSS**  
 * 🧭 **React Router**  
@@ -87,7 +85,9 @@ Se prueban:
 ![](./src/assets/test.png)
 
 ## **Gestión del proyecto**
-Мы использовали гитпроект для организации работы команды. 
+Usamos GitHub Projects para organizar el trabajo del equipo, asignar tareas y hacer un seguimiento del progreso de cada etapa del proyecto.
+
+![](./src/assets/img/progress.jpg)
 
 ## **👥 Equipo del proyecto**
 
