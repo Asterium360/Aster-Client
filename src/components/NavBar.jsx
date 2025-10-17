@@ -23,7 +23,7 @@ const NavBar = ({ logo = Logo }) => {
     { label: "Explore", to: "/explore" },
     { label: "About", to: "/about" },
     { label: "Contact", to: "/contact" },
-     { label: "Play", to: "/games/meteor-dodger" },
+    { label: "Play", to: "/games/meteor-dodger" },
   ];
 
   const adminLinks = [
@@ -51,7 +51,7 @@ const NavBar = ({ logo = Logo }) => {
         </div>
 
         {/* Links centrados */}
-        <div className="hidden sm:flex gap-7 justify-center flex-1">
+        <div className="hidden lg:flex gap-7 justify-center flex-1">
           {links.map(link => (
             <NavLink
               key={link.to}
@@ -83,7 +83,7 @@ const NavBar = ({ logo = Logo }) => {
         </div>
 
         {/* Acciones derecha */}
-        <div className="hidden sm:flex gap-3 items-center">
+        <div className="hidden lg:flex gap-3 items-center">
           {!isAuthenticated ? (
             visibleActions.map(btn => (
               <NavLink key={btn.to} to={btn.to} data-testid={`${btn.label.toLowerCase()}-button`}>
@@ -104,18 +104,18 @@ const NavBar = ({ logo = Logo }) => {
           )}
         </div>
 
-        {/* Botón hamburguesa mobile */}
+        {/* Botón hamburguesa  */}
         <button
-          className="sm:hidden p-2 rounded-md focus:outline-none bg-gray-700"
+          className="lg:hidden p-2 rounded-md focus:outline-none bg-gray-700"
           onClick={handleToggleMenu}
         >
           {isMenuOpen ? "✕" : "☰"}
         </button>
       </div>
 
-      {/* Menú móvil */}
+      {/* Menú móvil/tablet */}
       <div
-        className={`sm:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${
           isMenuOpen ? "max-h-screen opacity-100 mt-2" : "max-h-0 opacity-0 mt-0"
         } flex flex-col gap-2`}
       >
@@ -126,6 +126,7 @@ const NavBar = ({ logo = Logo }) => {
             className={({ isActive }) =>
               `px-2 py-2 rounded-md hover:bg-gray-700 ${isActive ? "bg-gray-900 font-bold" : ""}`
             }
+            onClick={() => setIsMenuOpen(false)}
             data-testid={`mobile-link-${link.label.toLowerCase()}`}
           >
             {link.label}
@@ -141,6 +142,7 @@ const NavBar = ({ logo = Logo }) => {
               className={({ isActive }) =>
                 `px-2 py-2 rounded-md hover:bg-gray-700 ${isActive ? "bg-gray-900 font-bold" : ""}`
               }
+              onClick={() => setIsMenuOpen(false)}
               data-testid={`mobile-link-${link.label.toLowerCase()}`}
             >
               {link.label}
@@ -150,16 +152,16 @@ const NavBar = ({ logo = Logo }) => {
 
         {!isAuthenticated
           ? visibleActions.map(btn => (
-              <NavLink key={btn.to} to={btn.to} data-testid={`mobile-${btn.label.toLowerCase()}-button`}>
+              <NavLink key={btn.to} to={btn.to} onClick={() => setIsMenuOpen(false)} data-testid={`mobile-${btn.label.toLowerCase()}-button`}>
                 <Button title={btn.label} />
               </NavLink>
             ))
           : (
             <div className="flex items-center gap-2">
-              <button onClick={() => navigate("/myprofile")} className="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
+              <button onClick={() => {navigate("/myprofile"); setIsMenuOpen(false);}} className="w-10 h-10 rounded-full overflow-hidden border-2 border-white">
                 {user?.avatar ? <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" /> : <UserCircleIcon className="w-full h-full text-white" />}
               </button>
-              <Button title="Logout" action={()=>{logout(); navigate("/")}} data-testid="mobile-logout-button" />
+              <Button title="Logout" action={()=>{logout(); navigate("/"); setIsMenuOpen(false);}} data-testid="mobile-logout-button" />
             </div>
           )
         }

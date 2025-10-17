@@ -24,11 +24,6 @@ body,
 
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-}
-
 
 .dark-notification .ant-notification-notice-message,
 .dark-notification .ant-notification-notice-description {
