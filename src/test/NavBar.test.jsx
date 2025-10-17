@@ -46,7 +46,7 @@ describe("NavBar", () => {
         expect(screen.getByTestId("link-explore")).toBeInTheDocument();
         expect(screen.getByTestId("link-about")).toBeInTheDocument();
         expect(screen.getByTestId("link-contact")).toBeInTheDocument();
-        expect(screen.getByTestId("link-jugar")).toBeInTheDocument();
+        expect(screen.getByTestId("link-play")).toBeInTheDocument();
         expect(screen.queryByTestId("link-admin")).toBeNull();
     });
 
@@ -149,7 +149,7 @@ describe("NavBar", () => {
         expect(screen.getByTestId("mobile-link-explore")).toBeInTheDocument();
         expect(screen.getByTestId("mobile-link-about")).toBeInTheDocument();
         expect(screen.getByTestId("mobile-link-contact")).toBeInTheDocument();
-        expect(screen.getByTestId("mobile-link-jugar")).toBeInTheDocument();
+        expect(screen.getByTestId("mobile-link-play")).toBeInTheDocument();
     });
 
     it("muestra Login y SignUp en mobile cuando NO autenticado", () => {
