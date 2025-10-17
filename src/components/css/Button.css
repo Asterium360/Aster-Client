@@ -1,0 +1,52 @@
+button {
+    position: relative;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid #eef5ff;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #fff;
+    overflow: hidden;
+    background: linear-gradient(270deg, #0a0c27, #0f0f29, #0e0e14, #0e112b);
+    background-size: 800% 800%;
+    animation: galaxy 10s linear infinite;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    box-shadow: 0 0 20px 5px #2e1936;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.97);
+    box-shadow: 0 0 15px 2px #361a42 inset;
+}
+
+/* Fondo animado tipo galaxia */
+@keyframes galaxy {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Efecto brillante al pasar el mouse */
+button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    /*background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.048) 0%, transparent 70%);*/
+    opacity: 0;
+    transform: rotate(45deg);
+    transition: opacity 0.3s ease;
+}
+
+button:hover::before {
+    opacity: 1;
+}

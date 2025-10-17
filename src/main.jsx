@@ -1,10 +1,15 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
+import { RouterProvider } from 'react-router-dom'
+import AsterRouter from './router/Router'
+import useAuthStore from './store/authStore'
+import "antd/dist/reset.css";
+
+useAuthStore.getState().initialize();
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={AsterRouter}/>
   </StrictMode>,
 )
