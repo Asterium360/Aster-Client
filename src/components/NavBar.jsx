@@ -23,7 +23,7 @@ const NavBar = ({ logo = Logo }) => {
     { label: "Explore", to: "/explore" },
     { label: "About", to: "/about" },
     { label: "Contact", to: "/contact" },
-     { label: "Jugar", to: "/games/meteor-dodger" },
+     { label: "Play", to: "/games/meteor-dodger" },
   ];
 
   const adminLinks = [
@@ -39,7 +39,7 @@ const NavBar = ({ logo = Logo }) => {
 
   return (
     <nav style={{ backgroundColor: "#02060D" }} className="w-full top-0 left-0 z-50 text-white px-4 py-4 backdrop-blur-md border-b border-white/10">
-      <div className="flex items-center justify-between">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo izquierda */}
         <div className="flex items-center gap-2">
           <NavLink to="/">

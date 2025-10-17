@@ -3,51 +3,53 @@ import { useEffect, useState } from "react";
 import { getUsers, deleteUser, updateUser } from "../services/UserServices";
 
 const AdminDashboard = () => {
-    const [users, setUsers] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        loadUsers();
-    }, []);
+  useEffect(() => {
+    loadUsers();
+  }, []);
 
-    const loadUsers = async () => {
-        setLoading(true);
-        try {
-            const data = await getUsers(); // token ya agregado por axiosInstance
-            console.log("Usuarios recibidos desde la API:", data);
-            setUsers(Array.isArray(data) ? data : []);
-        } catch (error) {
-            console.error("Error cargando usuarios:", error);
-            setUsers([]);
-        } finally {
-            setLoading(false);
-        }
-    };
+  const loadUsers = async () => {
+    setLoading(true);
+    try {
+      const data = await getUsers();
+      console.log("Usuarios recibidos desde la API:", data);
+      setUsers(Array.isArray(data) ? data : []);
+    } catch (error) {
+      console.error("Error cargando usuarios:", error);
+      setUsers([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    const handleDelete = async (id) => {
-        if (!confirm("¿Estás seguro de eliminar este usuario?")) return;
-        try {
-            await deleteUser(id);
-            loadUsers();
-        } catch (error) {
-            console.error("Error eliminando usuario:", error);
-        }
-    };
+  const handleDelete = async (id) => {
+    if (!confirm("¿Estás seguro de eliminar este usuario?")) return;
+    try {
+      await deleteUser(id);
+      loadUsers();
+    } catch (error) {
+      console.error("Error eliminando usuario:", error);
+    }
+  };
 
-    const handleRoleChange = async (id, role) => {
-        try {
-            await updateUser(id, { role });
-            loadUsers();
-        } catch (error) {
-            console.error("Error actualizando rol:", error);
-        }
-    };
+  const handleRoleChange = async (id, role) => {
+    try {
+      await updateUser(id, { role });
+      loadUsers();
+    } catch (error) {
+      console.error("Error actualizando rol:", error);
+    }
+  };
 
-    if (loading) return <p className="p-6">Cargando usuarios...</p>;
+  if (loading) return <p className="p-6">Cargando usuarios...</p>;
 
-    return (
-        <div className="p-6">
-            <h1 className="text-3xl font-bold mb-6">Dashboard - Gestión de Usuarios</h1>
+  return (
+  
+    <div className="min-h-dvh flex flex-col">
+      <div className="flex-1 p-6 mt-8">
+        <h1 className="text-3xl font-bold mb-8">Dashboard - Gestión de Usuarios</h1>
 
             <div className="overflow-x">
                 <table className="w-full border border-gray rounded-lg">
@@ -98,7 +100,9 @@ const AdminDashboard = () => {
                 </table>
             </div>
         </div>
-    );
+      </div>
+    
+  );
 };
 
 export default AdminDashboard;
